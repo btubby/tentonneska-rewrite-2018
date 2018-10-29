@@ -1,36 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
+import { Helmet } from "react-helmet";
+import Events from "../Components/Events";
 
-class Home extends Component {
+import backgroundImage from "../Assets/ttsBomb.jpg";
+export default class Live extends React.Component {
+  componentWillMount() {
+    document.body.style.backgroundColor = "black";
+    document.body.style.backgroundImage = `url(${backgroundImage})`;
+  }
   render() {
     return (
       <div>
-        <center>
-          <div className="image_wrapper">
-            {/* <img src="http://tubbycreative.com/tts/BIO.gif" width="70%" /> */}
-            <img
-              src="http://tubbycreative.com/tts/img/TTS1640.jpg"
-              alt="tts"
-              class="responsive"
-            />
-            <img
-              src="http://tubbycreative.com/tts/img/TTS1640.jpg"
-              alt="tts"
-              class="responsive"
-            />
-            <img
-              src="http://tubbycreative.com/tts/img/TTS1640.jpg"
-              alt="tts"
-              class="responsive"
-            />
-            <img
-              src="http://tubbycreative.com/tts/img/TTS1640.jpg"
-              alt="tts"
-              class="responsive"
-            />
-          </div>
-        </center>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Ten Tonne Ska</title>
+          <link
+            href="https://fonts.googleapis.com/css?family=Oswald"
+            rel="stylesheet"
+          />
+          <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        </Helmet>
+
+        <Events />
       </div>
     );
   }
 }
-export default Home;
+

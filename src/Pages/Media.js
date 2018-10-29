@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
+import { Helmet } from "react-helmet";
 
 class Newsletter extends Component {
-  componentDidMount() {
-    console.log("mounted");
-  }
-  onDuration() {
-    console.log("video ready");
-  }
+  // componentDidMount() {
+  //   console.log("mounted");
+  // }
+  // onDuration() {
+  //   console.log("video ready");
+  // }
   render() {
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Ten Tonne Ska</title>
+          <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        </Helmet>
         <center>
           <div className="media_container">
             <div className="player-wrapper">

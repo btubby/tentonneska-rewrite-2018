@@ -9,7 +9,7 @@ const config = {
   storageBucket: "btubz-39f1f.appspot.com",
   messagingSenderId: "282715318866"
 };
-firebase.initializeApp(config);
+// firebase.initializeApp(config);
 
-export default firebase;
-export const database = firebase.database();
+// export default firebase;
+// export const database = firebase.database();

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { pushRotate as M } from "react-burger-menu";
+import { push as M } from "react-burger-menu";
 import facebook_logo from "../Assets/facebook.png";
 import instagram_logo from "../Assets/instagram.png";
 
@@ -36,32 +36,32 @@ class Sidebar extends React.Component {
         <div id="sidebar_bottom">
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href="https://www.facebook.com/TenTonneSka?fref=ts"
           >
             <img src={facebook_logo} alt="Logo" width="20%" />
           </a>
-          <a target="_blank" href="#">
+          <a target="_blank" 
+          rel="noopener noreferrer"
+          href="#">
             <img src={instagram_logo} alt="Logo" width="20%" />
           </a>
         </div>
-        <a id="Home" className="menu-item" href="/">
-          Home
-        </a>
-        <a id="Live" className="menu-item" href="/live">
-          Live
+       
+        <a id="Live" className="menu-item" href="/">
+          LIVE
         </a>
         <a id="Media" className="menu-item" href="/media">
-          Media
+          MEDIA
         </a>
         <a id="News" className="menu-item" href="/news">
-          NewsLetter
-        </a>
-
-        <a id="Test1" className="menu-item" href="/test">
-          Test
+          CONTACT
         </a>
         <a href="http://tubbycreative.com/sounds/" target="_blank">
-          Pete Sim
+          GEEZER
+        </a>
+        <a id="Test" className="menu-item" href="/test">
+          tmp
         </a>
         {/* <a onClick={this.showSettings} className="menu-item--small" href="#">
           Settings

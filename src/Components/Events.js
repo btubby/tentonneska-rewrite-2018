@@ -62,9 +62,12 @@ class Events extends Component {
       .then(response => response.json())
       .then(responseJson => {
         let a = [];
+        var now = new Date();
+
         responseJson.feed.entry.forEach(function(event, index) {
           let parsed_event = formatEvent(event);
           let dateObject = parseDate(parsed_event.gig_date);
+
           let hours = dateObject.getHours();
           let am_pm = hours < 12 ? "AM" : "PM"; // Set AM/PM
           hours = hours - 12;
@@ -74,7 +77,11 @@ class Events extends Component {
             months[dateObject.getMonth()]
           } ${dateObject.getFullYear()} ${hours}${am_pm}`;
           parsed_event.dateObject = dateObject;
-          a.push(parsed_event);
+
+          if (dateObject >= now) {
+            a.push(parsed_event);
+            // console.log('gig in future!');
+          }
         });
         this.setState({ data: a, loading: false });
       })
@@ -87,14 +94,17 @@ class Events extends Component {
     let EventsList = [];
     if (this.state.data) {
       let events = this.state.data;
-      const firstEvent = events.shift();
-
-      console.log(firstEvent);
       const nextEvent = events[0].dateObject;
-      const nextEventMinutes =
-        (nextEvent.getMinutes() < 10 ? "0" : "") + nextEvent.getMinutes();
-      const nextEventString = `${nextEvent.getFullYear()}-${nextEvent.getMonth() +
-        1}-${nextEvent.getDate()}T${nextEvent.getHours()}:${nextEventMinutes}:00`;
+      const nextEventMinutes = (nextEvent.getMinutes() < 10 ? "0" : "") + nextEvent.getMinutes();
+      const nextEventDay = (nextEvent.getDate() < 10 ? "0" : "") + nextEvent.getDate();
+      const nextEventString = `${nextEvent.getFullYear()}-${nextEvent.getMonth()+1}-${nextEventDay}T${nextEvent.getHours()}:${nextEventMinutes}:00`;
+
+        // console.log(nextEventString);
+        // console.log('YEAR: ' +  nextEvent.getFullYear());
+        // console.log("MONTH: " + nextEvent.getMonth() +1);
+        // console.log("DAY: " + nextEventDay);
+        // console.log("HOURS: " + nextEvent.getHours());
+        // console.log("MINUTES: " + nextEventMinutes);
 
       let arr = [
         // Add the next event
@@ -104,15 +114,18 @@ class Events extends Component {
             <Countdown date={`${nextEventString}`} />
           </div>
           <Event
-            title={firstEvent.gig_title}
-            location={firstEvent.gig_location_s}
-            address={firstEvent.gig_address_s}
-            date={firstEvent.datestring}
+            title={events[0].gig_title}
+            location={events[0].gig_location_s}
+            address={events[0].gig_address_s}
+            date={events[0].datestring}
             class={`nextgig`}
             // key={999}
           />
         </div>
       ];
+
+      events.shift();
+
       arr.push(
         events.map(function(item, i) {
           return (
@@ -182,7 +195,7 @@ function parseDate(d) {
   var dateValue = input[0].split(":") + "";
   let timeValue = "";
   if (typeof input[1] === "undefined" || input[1] === null) {
-    console.log("** no time for event, so hardcoding to 9pm");
+    // console.log("** no time for event, so hardcoding to 9pm");
     timeValue = "21,00";
   } else {
     timeValue = input[1].split(":") + "";

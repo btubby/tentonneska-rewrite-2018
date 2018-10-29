@@ -1,6 +1,4 @@
-import React from "react";
-// import ReactPlayer from "react-player";
-// import styled from "styled-components";
+import React, { Component } from "react";
 
 import backgroundImage from "../Assets/will.jpeg";
 // import logo from "../Assets/fuse.mp4";
@@ -12,19 +10,28 @@ import backgroundImage from "../Assets/will.jpeg";
 //   z-index: 200;
 // `;
 
-class Test extends React.Component {
+class Test extends Component {
   componentWillMount() {
     document.body.style.backgroundColor = "black";
     document.body.style.backgroundImage = `url(${backgroundImage})`;
   }
-
   render() {
     return (
       <div>
-        <center>
+      <center>
+        <div className="image_wrapper">
+        
           <div className="events_container" />
-        </center>
-      </div>
+          <img
+            src="http://tubbycreative.com/tts/img/TTS1640Old.jpg"
+            class="responsive"
+            alt=""
+          />
+          
+        </div>
+      </center>
+    </div>
+
     );
   }
 }
