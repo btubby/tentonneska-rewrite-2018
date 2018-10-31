@@ -16,7 +16,7 @@ class Sidebar extends React.Component {
         width: "26px",
         height: "20px",
         right: "36px",
-        top: "46px"
+        top: "30px"
       },
       bmBurgerBars: { background: "#373a47" },
       bmCrossButton: { 
