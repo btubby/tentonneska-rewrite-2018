@@ -18,9 +18,10 @@ body {
 .bm-menu {
   /* font-family: "Open Sans"; */
   font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+  /* font-size: 10px; */
   background: #000000;
   padding: 2.5em 1.5em 0;
+  padding-left: 2%;
 }
 /* Wrapper for item list */
 .bm-item-list {
@@ -92,7 +93,7 @@ code {
   background-color: black;
   position: fixed;
   top: 0;
-  height: 100px;
+  height: 77px;
   width: 100%;
   z-index: 100;
   opacity: 0.8;
@@ -203,4 +204,8 @@ main {
 }
 .eventaddress {
   font-size: 55%;
+}
+.menu-item {
+  font-size: 3vw;
+  padding-bottom: 10px;
 }

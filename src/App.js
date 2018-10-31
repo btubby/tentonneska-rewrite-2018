@@ -14,7 +14,7 @@ import { Helmet } from "react-helmet";
 
 const BestBand = styled.div`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.3rem;
+  font-size: 15px;
   position: absolute;
   top: 27px;
   left: 20px;
@@ -24,7 +24,7 @@ const BestBand = styled.div`
   @media (min-width: 768px) {
     /* background: mediumseagreen; */
     color: white;
-    font-size: 3rem;
+    font-size: 25px;
   }
   a {
     color: inherit;
