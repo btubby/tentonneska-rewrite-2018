@@ -6,6 +6,8 @@ import Live from "./Pages/Live";
 import Media from "./Pages/Media";
 import Newsletter from "./Pages/Newsletter";
 import Test from "./Pages/Test";
+import Geezer from "./Pages/Geezer";
+
 import styled from "styled-components";
 
 import Sidebar from "./Components/Sidebar";
@@ -65,6 +67,7 @@ class App extends Component {
           <Route exact={true} path={"/live"} component={Live} />
           <Route exact={true} path={"/media"} component={Media} />
           <Route exact={true} path={"/news"} component={Newsletter} />
+          <Route exact={true} path={"/geezer"} component={Geezer} />
           <Route exact={true} path={"/test"} component={Test} />
           {/* <Route exact={true} path={"http://tubbycreative.com/sounds/"} /> */}
           {/* </div> */}
