@@ -1,38 +1,39 @@
 import React, { Component } from "react";
 
-import backgroundImage from "../Assets/will.jpeg";
-// import logo from "../Assets/fuse.mp4";
+// import Button from "../components/Button";
 
-// const Fuse = styled.div`
-//   position: absolute;
-//   top: 30%;
-//   left: 30%;
-//   z-index: 200;
+// import { database } from "../firebase";
+import { Helmet } from "react-helmet";
+
+import CaptureEmailAddress from "../Components/CaptureEmailAddress";
+
+//import { css } from "react-emotion";
+
+// const override = css`
+//   display: block;
+//   margin: 0 auto;
+//   border-color: red;
 // `;
 
-class Test extends Component {
-  componentWillMount() {
-    document.body.style.backgroundColor = "black";
-    document.body.style.backgroundImage = `url(${backgroundImage})`;
-  }
+class Newsletter extends Component {
+  
+  
   render() {
     return (
       <div>
-      <center>
-        <div className="image_wrapper">
-        
-          <div className="events_container" />
-          <img
-            src="http://tubbycreative.com/tts/img/TTS1640Old.jpg"
-            class="responsive"
-            alt=""
-          />
-          
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>GIGS PAGE</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
+        <div className="events_container">
+          <div className="swatch">
+            <CaptureEmailAddress />
+          </div>
         </div>
-      </center>
-    </div>
-
+      </div>
     );
   }
 }
-export default Test;
+
+export default Newsletter;
