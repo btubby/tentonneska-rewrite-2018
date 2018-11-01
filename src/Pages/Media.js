@@ -20,13 +20,15 @@ class Newsletter extends Component {
         <center>
           <div className="media_container">
             <div className="player-wrapper">
+            LOADING
               <ReactPlayer
                 url="https://www.youtube.com/watch?v=o8QYcI6x6M0"
                 // playing
                 className="react-player"
                 width="100%"
                 height="100%"
-                onReady={this.onDuration}
+                // onReady={this.onDuration}
+                // preload='true'
               />
             </div>
             <div className="player-wrapper">
