@@ -33,16 +33,13 @@ const SidebarMenu = styled.div`
 const MenuItem = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.3rem;
-  /* position: absolute; */
-  /* top: 27px; */
   left: 20px;
   z-index: 200;
   font-weight: bold;
   color: red;
   @media (min-width: 768px) {
-    /* background: mediumseagreen; */
     color: white;
-    font-size: 3rem;
+    font-size: 2em;
   }
   a {
     color: inherit;
@@ -60,27 +57,25 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    let styles = {
-      bmBurgerButton: {
-        position: "fixed",
-        width: "26px",
-        height: "20px",
-        right: "36px",
-        top: "30px"
-      },
-      bmBurgerBars: { background: "#373a47" },
-      bmCrossButton: { 
-        height: "24px", 
-        width: "24px",
-        right: "36px",
-        top: "29px" 
-      },
-      bmCross: { background: "#bdc3c7" },
-
-      bmMorphShape: { fill: "#fff63f" },
-
-      bmOverlay: { background: "rgba(0, 0, 0, 0.3)" }
-    };
+    // let styles = {
+    //   bmBurgerButton: {
+    //     position: "fixed",
+    //     width: "26px",
+    //     height: "20px",
+    //     right: "36px",
+    //     top: "30px"
+    //   },
+    //   bmBurgerBars: { background: "#373a47" },
+    //   bmCrossButton: { 
+    //     height: "24px", 
+    //     width: "24px",
+    //     right: "36px",
+    //     top: "29px" 
+    //   },
+    //   bmCross: { background: "#bdc3c7" },
+    //   bmMorphShape: { fill: "#fff63f" },
+    //   bmOverlay: { background: "rgba(0, 0, 0, 0.3)" }
+    // };
     return (
       <Menu
         right
@@ -89,9 +84,7 @@ class Sidebar extends React.Component {
         outerContainerId={"outer-container"}
         width={ '25%' }
       >
-        <SidebarMenu>
-       
-        </SidebarMenu>
+        <SidebarMenu/>
         <MenuItem>
           <a id="Live"  href="/">
             LIVE
@@ -113,10 +106,11 @@ class Sidebar extends React.Component {
           </a>
         </MenuItem>
 
-      
-        <a className="menu-item" href="http://tubbycreative.com/sounds/" target="_blank">
-          GEEZER2
-        </a>
+        <MenuItem>
+          <a href="http://tubbycreative.com/sounds/" target="_blank">
+            GEEZER2
+          </a>
+        </MenuItem>
     
       </Menu>
     );

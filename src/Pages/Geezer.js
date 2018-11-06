@@ -1,26 +1,23 @@
 import React from "react";
-// import { Helmet } from "react-helmet";
 // import backgroundImage from "../Assets/ttsBomb.jpg";
 import Iframe from 'react-iframe';
 
-export default class Live extends React.Component {
-
-
+class Geezer extends React.Component {
   componentWillMount() {
     document.body.style.backgroundColor = "black";
     // document.body.style.backgroundImage = `url(${backgroundImage})`;
   }
-  
-  //https://stackoverflow.com/questions/33913737/inserting-the-iframe-into-react-component 
-  
   render() {
     return (
       <div className="events_container">
         <div className="swatch">GEEZER</div>
-<p>
+          <p>
 
-
-</p>
+ <div>
+ <audio ref="audio_tag" src="http://tubbycreative.com/sounds/sounds/PeteSamples/Growl02.wav" controls />
+ </div>
+          </p>
+          {/* https://stackoverflow.com/questions/33913737/inserting-the-iframe-into-react-component  */}
           <Iframe url="http://tubbycreative.com/sounds/"
             width="84%"
             height="1000px"
@@ -30,10 +27,9 @@ export default class Live extends React.Component {
             position="relative"
             allowFullScreen
           />
-
       </div>
-      
-      
       );
     }
   }
+
+  export default Geezer;

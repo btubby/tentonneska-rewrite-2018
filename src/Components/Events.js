@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-//import styled from "styled-components";
+import styled from "styled-components";
 import Countdown from "./Countdown";
+
+const searchLink = styled.a`
+  text-decoration: none;
+`;
 
 const days = [
   "Sunday",
@@ -155,12 +159,14 @@ class Events extends Component {
   }
 }
 const Event = props => (
-  <div className={props.class}>
-    <div className="eventtitle">{props.title}</div>
-    <div className="event_date">{props.date}</div>
-    <div className="eventlocation">{props.location}</div>
-    <div className="eventaddress">{props.address}</div>
-  </div>
+  <searchLink href='https://www.google.com/search?q=ten+tonne+ska'>
+    <div className={props.class}>
+      <div className="eventtitle">{props.title}</div>
+      <div className="event_date">{props.date}</div>
+      <div className="eventlocation">{props.location}</div>
+      <div className="eventaddress">{props.address}</div>
+    </div>
+  </searchLink>
 );
 // {
 //   "gig_title": "DIG IT!",

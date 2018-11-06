@@ -2,11 +2,11 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import Events from "../Components/Events";
 
-import backgroundImage from "../Assets/ttsBomb.jpg";
+// import backgroundImage from "../Assets/ttsBomb.jpg";
 export default class Live extends React.Component {
   componentWillMount() {
-    document.body.style.backgroundColor = "black";
-    document.body.style.backgroundImage = `url(${backgroundImage})`;
+    // document.body.style.backgroundColor = "black";
+    // document.body.style.backgroundImage = `url(${backgroundImage})`;
   }
   render() {
     return (
