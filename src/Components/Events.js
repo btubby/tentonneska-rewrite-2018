@@ -112,7 +112,7 @@ class Events extends Component {
 
       let arr = [
         // Add the next event
-        <div key={99} className="swatch">
+        <div key={99} className="swatch next">
           <div id="countdown_container">
             Time to next gig
             <Countdown date={`${nextEventString}`} />

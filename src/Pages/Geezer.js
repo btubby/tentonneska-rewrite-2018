@@ -2,6 +2,8 @@ import React from "react";
 // import backgroundImage from "../Assets/ttsBomb.jpg";
 import Iframe from 'react-iframe';
 
+import will1 from "../Assets/tts_will_1.jpg";
+
 class Geezer extends React.Component {
   componentWillMount() {
     document.body.style.backgroundColor = "black";
@@ -11,6 +13,7 @@ class Geezer extends React.Component {
     return (
       <div className="events_container">
         <div className="swatch">GEEZER</div>
+        <img src={will1} width='20%'/>
           <p>
 
  <div>
