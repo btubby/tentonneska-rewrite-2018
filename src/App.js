@@ -14,6 +14,15 @@ import Sidebar from "./Components/Sidebar";
 import { Helmet } from "react-helmet";
 // const REACT_VERSION = React.version;
 
+const Header = styled.div`
+  background-color: black;
+  position: fixed;
+  top: 0;
+  height: 77px;
+  width: 100%;
+  z-index: 100;
+  opacity: 1;
+`;
 const BestBand = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
@@ -53,24 +62,19 @@ class App extends Component {
           <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
         </Helmet>
 
-        <Sidebar />
+        {/* <Sidebar /> */}
         <main id="page-wrap">
-          <div id="header">
+          <Header>
             <BestBand>
               <a href="/">THE BEST SKA BAND IN SE26</a>
             </BestBand>
-          </div>
-
-          {/* <div id="main"> */}
-          {/* <div>React version: {REACT_VERSION}</div>, */}
+          </Header>
           <Route exact={true} path={"/"} component={Home} />
           <Route exact={true} path={"/live"} component={Live} />
           <Route exact={true} path={"/media"} component={Media} />
           <Route exact={true} path={"/news"} component={Newsletter} />
           <Route exact={true} path={"/geezer"} component={Geezer} />
           <Route exact={true} path={"/test"} component={Test} />
-          {/* <Route exact={true} path={"http://tubbycreative.com/sounds/"} /> */}
-          {/* </div> */}
         </main>
       </div>
     );
