@@ -7,11 +7,11 @@ import Media from "./Pages/Media";
 import Newsletter from "./Pages/Newsletter";
 import Test from "./Pages/Test";
 import Geezer from "./Pages/Geezer";
+// import Sidebar from "./Components/Sidebar";
 
 import styled from "styled-components";
-
-import Sidebar from "./Components/Sidebar";
 import { Helmet } from "react-helmet";
+
 // const REACT_VERSION = React.version;
 
 const Header = styled.div`
@@ -31,7 +31,7 @@ const BestBand = styled.div`
   left: 20px;
   z-index: 200;
   font-weight: bold;
-  color: red;
+  color: white;
   @media (min-width: 768px) {
     /* background: mediumseagreen; */
     color: white;
@@ -47,11 +47,39 @@ const BestBand = styled.div`
   }
 `;
 
-class App extends Component {
-  
+const Images = [
+  'http://tubbycreative.com/TTSbacking0.jpg',
+  'http://tubbycreative.com/TTSbacking1.jpg', 
+  'http://tubbycreative.com/TTSbacking2.jpg', 
+  'http://tubbycreative.com/TTSbacking3.jpg', 
+  'http://tubbycreative.com/TTSbacking4.jpg',
+  'http://tubbycreative.com/TTSbacking5.jpg',
+  'http://tubbycreative.com/TTSbacking6.jpg',
+  'http://tubbycreative.com/TTSbacking7.jpg',
+  'http://tubbycreative.com/tts/TTSTuesFin.jpg'
+]
+
+const Container = styled.div`
+  // background-image: url('${ Images[ Math.floor(Math.random() * Images.length) ] }');
+  // background-repeat: no-repeat;
+  // background-position: right top;
+  // background-attachment: fixed !important;
+  // background-size: 100% auto; 
+  // margin: 0;
+  // padding: 0;
+  // overflow: hidden;
+
+  // min-height: 100%;
+  // background-size: cover;
+`;
+
+export default class App extends Component {
+  componentDidMount(){
+    document.body.style.backgroundImage = `url(${ Images[ Math.floor(Math.random() * Images.length) ] })`;
+   }
   render() {
     return (
-      <div id="outer-container">
+      <Container>
         <Helmet>
           <meta charSet="utf-8" />
           <title>Ten Tonne Ska</title>
@@ -66,7 +94,7 @@ class App extends Component {
         <main id="page-wrap">
           <Header>
             <BestBand>
-              <a href="/">THE BEST SKA BAND IN SE26</a>
+              <a href="/">THE BEST SKA AND REGGAE IN SE26</a>
             </BestBand>
           </Header>
           <Route exact={true} path={"/"} component={Home} />
@@ -76,9 +104,7 @@ class App extends Component {
           <Route exact={true} path={"/geezer"} component={Geezer} />
           <Route exact={true} path={"/test"} component={Test} />
         </main>
-      </div>
+      </Container>
     );
   }
 }
-
-export default App;

@@ -1,16 +1,14 @@
 body {
-  background-image: url(http://tubbycreative.com/tts/TTSTuesFin.jpg);
-  /* background-image: url("Assets/tts_bg_october_2018.jpeg"); */
-
+  background-image: url("http://tubbycreative.com/tts/TTSTuesFin.jpg");
+  background-image: url("http://tubbycreative.com/TTSbacking7.jpg");
   background-repeat: no-repeat;
   background-position: right top;
   background-attachment: fixed !important;
-  background-size: 100% auto; /* width and height, can be %, px or whatever. */
-  background-color: #a2865f;
-
+  background-size: 100% auto; 
   margin: 0;
-  padding: 0;
-}
+  padding: 0; 
+} 
+
 .about-bg {
   background: url(http://tubbycreative.com/tts/TTSTuesFin.jpg) no-repeat center
   center fixed;
