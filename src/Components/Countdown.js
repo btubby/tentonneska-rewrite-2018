@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
-/**
- * Note :
- * If you're using react v 15.4 or less
- * You can directly import PropTypes from react instead.
- * Refer to this : https://reactjs.org/warnings/dont-call-proptypes.html
- */
+const CCountdown = styled.div`
+  color: red;
+  width: 50%;
+  font-size: 5vw;
+`;
 
+const CountdownDigit = styled.span`
+  font-size: 100%;
+  color: #ffc703;
+`;
 class Countdown extends Component {
   constructor(props) {
     super(props);
@@ -89,53 +93,55 @@ class Countdown extends Component {
     const countDown = this.state;
 
     return (
-      <div className="Countdown">
+      <CCountdown>
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <span className="countdown_digit">
+            <CountdownDigit>
               {this.addLeadingZeros(countDown.days)}
-            </span>
-            <span>{countDown.days === 1 ? "Day" : "Days"}</span>
+            </CountdownDigit>
+            <span>{countDown.days === 1 ? "DAY" : "DAYS"}</span>
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <span className="countdown_digit">
+            <CountdownDigit>
               {this.addLeadingZeros(countDown.hours)}
-            </span>
-            <span>Hours</span>
+            </CountdownDigit>
+            <span>HOURS</span>
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <span className="countdown_digit">
+            <CountdownDigit>
               {this.addLeadingZeros(countDown.min)}
-            </span>
-            <span>Min</span>
+            </CountdownDigit>
+            <span>MIN</span>
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <span className="countdown_digit">
+            <CountdownDigit>
               {this.addLeadingZeros(countDown.sec)}
-            </span>
-            <span>Sec</span>
+            </CountdownDigit>
+            <span>SEC</span>
           </span>
         </span>
-      </div>
+      </CCountdown>
     );
   }
 }
 
 Countdown.propTypes = {
-  date: PropTypes.string.isRequired
+  date: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired
 };
 
 Countdown.defaultProps = {
-  date: new Date()
+  date: new Date(),
+  width: "100%"
 };
 
 export default Countdown;
