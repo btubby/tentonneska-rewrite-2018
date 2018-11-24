@@ -2,7 +2,7 @@ import React from "react";
 // import facebook_logo from "../Assets/facebook.png";
 // import instagram_logo from "../Assets/instagram.png";
 import styled from "styled-components";
-import { push as Menu } from "react-burger-menu";
+import { slide as Menu } from "react-burger-menu";
 
 const styles = {
   bmBurgerButton: {
@@ -10,13 +10,13 @@ const styles = {
     width: "36px",
     height: "30px",
     right: "36px",
-    top: "36px"
+    top: "23px"
   },
-  bmCrossButton: { 
-    height: "24px", 
+  bmCrossButton: {
+    height: "24px",
     width: "24px",
     right: "35px",
-    top: "32px",
+    top: "32px"
   },
   bmBurgerBars: { background: "#373a47" },
   bmCross: { background: "#bdc3c7" },
@@ -31,7 +31,7 @@ const SidebarMenu = styled.div`
 `;
 
 const MenuItem = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.3rem;
   left: 20px;
   z-index: 200;
@@ -46,7 +46,7 @@ const MenuItem = styled.div`
     text-decoration: none;
 
     &:hover {
-      color: yellow;
+      color: #ffc703;
     }
   }
 `;
@@ -66,11 +66,11 @@ class Sidebar extends React.Component {
     //     top: "30px"
     //   },
     //   bmBurgerBars: { background: "#373a47" },
-    //   bmCrossButton: { 
-    //     height: "24px", 
+    //   bmCrossButton: {
+    //     height: "24px",
     //     width: "24px",
     //     right: "36px",
-    //     top: "29px" 
+    //     top: "29px"
     //   },
     //   bmCross: { background: "#bdc3c7" },
     //   bmMorphShape: { fill: "#fff63f" },
@@ -82,36 +82,34 @@ class Sidebar extends React.Component {
         styles={styles}
         pageWrapId={"page-wrap"}
         outerContainerId={"outer-container"}
-        width={ '25%' }
+        width={"25%"}
       >
-        <SidebarMenu/>
+        <SidebarMenu />
         <MenuItem>
-          <a id="Live"  href="/">
+          <a id="Live" href="/">
             LIVE
           </a>
         </MenuItem>
         <MenuItem>
-          <a id="Media"  href="/media">
-            MEDIA
+          <a id="Media" href="/media">
+            VIDEO
           </a>
         </MenuItem>
         <MenuItem>
-          <a id="News"  href="/news">
+          <a id="News" href="/news">
             CONTACT
           </a>
         </MenuItem>
-        <MenuItem>
+        {/* <MenuItem>
           <a id="News"  href="/geezer">
             GEEZER
           </a>
         </MenuItem>
-
         <MenuItem>
           <a href="http://tubbycreative.com/sounds/" target="_blank">
             GEEZER2
           </a>
-        </MenuItem>
-    
+        </MenuItem> */}
       </Menu>
     );
   }

@@ -1,8 +1,31 @@
 import React, { Component } from "react";
-// import { database } from "../firebase";
 import { Helmet } from "react-helmet";
 import CaptureEmailAddress from "../Components/CaptureEmailAddress";
+import styled from "styled-components";
 
+const Red = styled.div`
+  color: red;
+  font-size: 75%;
+  padding-bottom: 30px;
+`;
+const Yellow = styled.div`
+  color: #ffc703;
+  font-size: 75%;
+`;
+const Green = styled.span`
+  color: green;
+  font-size: 75%;
+`;
+const FB = styled.a`
+  text-decoration: none;
+  color: #ffc703;
+  font-size: 75%;
+`;
+const Wrapper = styled.div`
+  // border: 1px solid white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+`;
 class Newsletter extends Component {
   render() {
     return (
@@ -10,25 +33,27 @@ class Newsletter extends Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Ten Tonne Ska</title>
-          <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         </Helmet>
 
         <center>
           <div className="events_container">
-            <div className="swatch">
-              <p>
-                Bookings
-                07980 743077
+            <div className="next swatch">
+              <Red>BOOKINGS 07980 743077</Red>
+              <Wrapper>
+                <Yellow>ENTER YOUR EMAIL TO KEEP IN TOUCH</Yellow>
+                <CaptureEmailAddress />
                 {/* <img width='70%' src='http://tubbycreative.com/tts/headers/Bookdaband.png' /> */}
-              <br/>
-              OR GET IN TOUCH VIA OUR <a target='_blank' href='https://www.facebook.com/TenTonneSka' rel="noopener noreferrer">FACEBOOK PAGE
-              </a></p>
-
-              <CaptureEmailAddress />
-
+              </Wrapper>
+              <Green>FIND US ON </Green>
+              <FB
+                target="_blank"
+                href="https://www.facebook.com/TenTonneSka"
+                rel="noopener noreferrer"
+              >
+                FACEBOOK
+              </FB>
             </div>
           </div>
-
         </center>
       </div>
     );

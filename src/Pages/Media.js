@@ -15,14 +15,19 @@ class Newsletter extends Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Ten Tonne Ska</title>
-          <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+          <link
+            href="http://fonts.googleapis.com/css?family=Montserrat:400,700"
+            rel="stylesheet"
+            type="text/css"
+          />
         </Helmet>
         <center>
           <div className="media_container">
             <div className="player-wrapper">
-            LOADING
+              LOADING
               <ReactPlayer
-                url="https://www.youtube.com/watch?v=o8QYcI6x6M0"
+                // url="https://www.youtube.com/watch?v=o8QYcI6x6M0"
+                url="https://www.youtube.com/watch?v=1IetxWvCFd4"
                 // playing
                 className="react-player"
                 width="100%"
@@ -33,21 +38,21 @@ class Newsletter extends Component {
             </div>
             <div className="player-wrapper">
               <ReactPlayer
-                url="https://www.youtube.com/watch?v=3U0X5fQUBF8"
+                url="https://www.youtube.com/watch?v=o8QYcI6x6M0"
                 className="react-player"
                 width="100%"
                 height="100%"
               />
             </div>
-            <div className="player-wrapper">
+            {/* <div className="player-wrapper">
               <ReactPlayer
                 url="https://www.youtube.com/watch?v=tYUKrGvnQ7E"
                 className="react-player"
                 width="100%"
                 height="100%"
               />
-            </div>
-            <div className="player-wrapper">
+            </div> */}
+            {/* <div className="player-wrapper">
               <ReactPlayer
                 url="https://soundcloud.com/willtubby/here-i-come-ten-tonne-dub"
                 className="react-player"
@@ -70,7 +75,7 @@ class Newsletter extends Component {
                 width="100%"
                 height="100%"
               />
-            </div>
+            </div> */}
             {/* <div className="player-wrapper">
               <ReactPlayer
                 url="https://www.facebook.com/TenTonneSka/videos/1505168612872119/"
