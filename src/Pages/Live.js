@@ -12,10 +12,6 @@ const Ben = styled.div`
 `;
 // import backgroundImage from "../Assets/ttsBomb.jpg";
 export default class Live extends React.Component {
-  componentWillMount() {
-    // document.body.style.backgroundColor = "black";
-    // document.body.style.backgroundImage = `url(${backgroundImage})`;
-  }
   render() {
     return (
       <div>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Red = styled.div`
   color: red;
-  font-size: 75%;
+  font-size: 85%;
   padding-bottom: 30px;
 `;
 const Yellow = styled.div`
@@ -24,7 +24,7 @@ const FB = styled.a`
 const Wrapper = styled.div`
   // border: 1px solid white;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 `;
 class Newsletter extends Component {
   render() {

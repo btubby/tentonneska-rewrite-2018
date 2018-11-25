@@ -5,7 +5,6 @@ import Home from "./Pages/Home";
 import Live from "./Pages/Live";
 import Media from "./Pages/Media";
 import Newsletter from "./Pages/Newsletter";
-import Test from "./Pages/Test";
 import Geezer from "./Pages/Geezer";
 import Sidebar from "./Components/Sidebar";
 
