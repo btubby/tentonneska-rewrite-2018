@@ -111,6 +111,7 @@ class Events extends Component {
               linker={
                 "https://www.google.com/search?q=ten+tonne+ska+" +
                 item.gig_location_s.split(" ").join("+") +
+                " " +
                 item.datestring.split(" ").join("+")
               }
             />

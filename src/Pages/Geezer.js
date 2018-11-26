@@ -1,6 +1,6 @@
 import React from "react";
 // import backgroundImage from "../Assets/ttsBomb.jpg";
-import Iframe from "react-iframe";
+// import Iframe from "react-iframe";
 
 import will1 from "../Assets/tts_will_1.jpg";
 
@@ -24,7 +24,7 @@ class Geezer extends React.Component {
           </div>
         </p>
         {/* https://stackoverflow.com/questions/33913737/inserting-the-iframe-into-react-component  */}
-        <Iframe
+        {/* <Iframe
           url="http://tubbycreative.com/sounds/"
           width="84%"
           height="1000px"
@@ -33,7 +33,7 @@ class Geezer extends React.Component {
           display="initial"
           position="relative"
           allowFullScreen
-        />
+        /> */}
       </div>
     );
   }
