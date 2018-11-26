@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
+import Sidebar from "./Components/Sidebar";
 import Home from "./Pages/Home";
-import Live from "./Pages/Live";
 import Media from "./Pages/Media";
 import Newsletter from "./Pages/Newsletter";
 import Geezer from "./Pages/Geezer";
-import Sidebar from "./Components/Sidebar";
+import Pete from "./Pages/Pete";
 
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
@@ -88,11 +88,6 @@ export default class App extends Component {
             href="https://fonts.googleapis.com/css?family=Oswald"
             rel="stylesheet"
           />
-          {/* <link
-            href="http://fonts.googleapis.com/css?family=Montserrat"
-            rel="stylesheet"
-            type="text/css"
-          /> */}
         </Helmet>
 
         <Sidebar />
@@ -103,12 +98,11 @@ export default class App extends Component {
             </BestBand>
           </Header>
           <PageContainer>
-            <Route exact={true} path={"/"} component={Home} />
-            <Route exact={true} path={"/live"} component={Live} />
-            <Route exact={true} path={"/media"} component={Media} />
-            <Route exact={true} path={"/news"} component={Newsletter} />
-            <Route exact={true} path={"/geezer"} component={Geezer} />
-            {/* <Route exact={true} path={"/test"} component={Test} /> */}
+            <Route exact path={"/"} component={Home} />
+            <Route exact path={"/media"} component={Media} />
+            <Route exact path={"/news"} component={Newsletter} />
+            <Route exact path={"/geezer"} component={Geezer} />
+            <Route exact path={"/pete"} component={Pete} />
           </PageContainer>
         </main>
       </Container>

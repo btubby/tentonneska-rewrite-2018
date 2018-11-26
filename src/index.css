@@ -135,18 +135,19 @@ main {
   padding-left: 30px;
   color: white;
   background-color: rgba(0, 0, 0, 0.9);
-  width: 80%;
+  width: 60%;
 }
 .next {
   background-color: rgba(0, 0, 0, 0.95);
+  width: 80%;
 }
 .nextgig {
-  font-size: 95%;
+  font-size: 100%;
   position: relative;
   top: -3vw;
 }
 .gig {
-  font-size: 70%;
+  font-size: 90%;
 }
 .timeto {
   background-color: tomato;

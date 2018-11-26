@@ -2,17 +2,23 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Countdown from "./Countdown";
 
-// import Bomb from "../Assets/bomb-animated.png";
 import Bomb from "../Assets/bomb2.gif";
+import Pete from "../Assets/pete_animated.gif";
 
 const BombContainer = styled.div`
-  width: 50%;
-  text-align: right;
   position: relative;
   top: 3vw;
-  left: 4vw;
+  left: 9vw;
+  text-align: right;
+  z-index: 200;
+  width: 50%;
 `;
 
+const PeteContainer = styled.span`
+  position: relative;
+  top: -11vw;
+  left: -30vw;
+`;
 const CountdownContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -72,6 +78,7 @@ class Events extends Component {
             </BombContainer>
           </CountdownContainer>
           <Event
+            pete={false}
             title={events[0].gig_title}
             location={events[0].gig_location_s}
             address={events[0].gig_address_s}
@@ -93,6 +100,7 @@ class Events extends Component {
         events.map(function(item, i) {
           return (
             <Event
+              pete={false}
               key={i}
               title={item.gig_title}
               location={item.gig_location_s}
@@ -129,6 +137,11 @@ const Event = props => (
       <EventDate>{props.date}</EventDate>
       <EventLocation>{props.location}</EventLocation>
       <EventAddress>{props.address}</EventAddress>
+      {props.pete && (
+        <PeteContainer>
+          <img src={Pete} alt="" width="50%" />
+        </PeteContainer>
+      )}
     </div>
   </SearchLink>
 );
