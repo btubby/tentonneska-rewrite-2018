@@ -77,10 +77,13 @@ export default class AnimatedFigure extends React.Component {
 
     if (this.state.play) {
       console.log("playing");
+      this.audio.play();
     } else {
       console.log("stopped");
+      this.audio.pause();
+      this.audio.currentTime = 0;
     }
-    this.state.play ? this.audio.play() : this.audio.pause();
+    // this.state.play ? this.audio.play() : this.audio.pause();
   }
   render() {
     return (
