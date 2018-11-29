@@ -50,21 +50,28 @@ export default class AnimatedFigure extends React.Component {
     this.state = { play: true };
     this.toggleAnimation = this.toggleAnimation.bind(this);
   }
-  ended() {}
   componentDidMount() {
     this.url =
       "http://tubbycreative.com/sounds/sounds/PeteBest/" +
       Images[Math.floor(Math.random() * Images.length)] +
       ".wav";
 
-    this.audio = new Audio(this.url);
-    this.audio.load();
+    // this.audio = new Audio(this.url);
+    this.audio = new Audio(this.props.sample ? this.props.sample : this.url);
+    console.log("sample:", this.props.sample);
+    this.audio.load(this.props.sample);
 
     var self = this;
     this.audio.onended = event => {
       console.log("finished plackback ", self.url);
-      this.pauseGif(true);
-      this.setState({ play: !this.state.play });
+
+      if (this.props.loop) {
+        self.audio.currentTime = 0;
+        self.audio.play();
+      } else {
+        this.pauseGif(true);
+        this.setState({ play: !this.state.play });
+      }
     };
 
     // this.audio.onerror = () => {

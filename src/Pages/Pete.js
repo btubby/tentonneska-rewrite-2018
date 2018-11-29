@@ -5,6 +5,7 @@ import Peter from "../Assets/pete_animated.gif";
 import PeterStill from "../Assets/pete_still.gif";
 import Will from "../Assets/will_animated.gif";
 import WillStill from "../Assets/will_still2.gif";
+import Bass from "../Assets/WODloopBASS.mp3";
 
 import styled from "styled-components";
 import Video from "../Components/Video";
@@ -40,6 +41,7 @@ class Pete extends React.Component {
           <AnimatedFigure
             animation={Will}
             stillFrame={WillStill}
+            sample={Bass}
             width={"100%"}
           />
           <AnimatedFigure
@@ -51,6 +53,8 @@ class Pete extends React.Component {
             animation={Will}
             stillFrame={WillStill}
             width={"150%"}
+            sample={Bass}
+            loop={true}
           />
         </FlexContainer>
         <Video url="https://www.youtube.com/watch?v=5xVymfmXKko" />
