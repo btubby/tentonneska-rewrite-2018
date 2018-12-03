@@ -36,30 +36,26 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 }
-
-@font-face {
-  /* http://www.fontspace.com/weknow/reggae-bass */
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Open Sans"), local("OpenSans"),
-    url("Assets/Fonts/PoplarStd.otf") format("truetype"); /* Safari, Android, iOS */
-}
 body {
-  /* background-image: url("http://tubbycreative.com/tts/TTSTuesFin.jpg");
-  background-image: url("http://tubbycreative.com/TTSbacking7.jpg"); */
+  background-image: url(http://tubbycreative.com/tts/TTSTuesFin.jpg);
+  /* background-image: url("Assets/tts_bg_october_2018.jpeg"); */
+
   background-repeat: no-repeat;
   background-position: right top;
   background-attachment: fixed !important;
-  background-size: 100% auto;
+  background-size: 100% auto; /* width and height, can be %, px or whatever. */
+  background-color: #a2865f;
+
   margin: 0;
   padding: 0;
-  font-family: "Oswald", sans-serif;
 }
-
+.about-bg {
+  background: url(http://tubbycreative.com/tts/TTSTuesFin.jpg) no-repeat center
+    center fixed;
+}
 .bm-menu {
-  font-family: "Open Sans";
-  /* font-family: "Montserrat", sans-serif; */
+  /* font-family: "Open Sans"; */
+  font-family: "Montserrat", sans-serif;
   /* font-size: 10px; */
   background: #000000;
   padding: 2.5em 1.5em 0;
@@ -79,6 +75,14 @@ body {
   font-size: 2em;
 }
 
+@font-face {
+  /* http://www.fontspace.com/weknow/reggae-bass */
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans"), local("OpenSans"),
+    url("Assets/Fonts/PoplarStd.otf") format("truetype"); /* Safari, Android, iOS */
+}
 .image_wrapper {
   /* margin-top: 100px; */
 }
@@ -86,15 +90,11 @@ body {
   width: 100%;
   height: auto;
 }
-.media_container {
-  margin: auto;
-  width: 80%;
-  padding: 10px;
-  /* background-color: white; */
-  color: black;
-  padding-top: 50px;
-}
 
+#homepage {
+  font-size: 80px;
+  height: 100%;
+}
 .player-wrapper {
   position: relative;
   padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
@@ -114,40 +114,37 @@ body {
   left: 0;
 }
 
-#header {
-  background-color: black;
-  position: fixed;
-  top: 0;
-  height: 77px;
-  width: 100%;
-  z-index: 100;
-  opacity: 0.8;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
+
 main {
   /* padding-top: 10%; */
 }
 .swatch {
-  margin-top: 10px;
-  margin-bottom: 4px;
+  margin-top: 20px !important;
+  margin-bottom: 4px !important;
   padding-top: 10px;
-  padding-right: 30px;
-  padding-bottom: 10px;
-  padding-left: 30px;
+  padding-right: 30px !important;
+  padding-bottom: 10px !important;
+  padding-left: 30px !important;
   color: white;
-  background-color: rgba(0, 0, 0, 0.9);
-  width: 60%;
-}
-.next {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 80%;
+
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
+
 .nextgig {
-  font-size: 100%;
-  position: relative;
-  top: -3vw;
+  font-size: 95%;
+  padding-top: 3%;
 }
 .gig {
-  font-size: 90%;
+  font-size: 70%;
 }
 .timeto {
   background-color: tomato;
@@ -173,36 +170,43 @@ main {
   background-color: rgba(0, 0, 0, 0.7);
 }
 .f {
+  /* background-color: #e29c42; */
   background-color: rgba(0, 0, 0, 0.7);
 }
 #sidebar_bottom {
+  /* font-family: 'Montserrat', sans-serif; */
   position: absolute;
   top: 9px;
   height: 30px;
 }
 
 .events_container {
-  padding-top: 20px;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   font-family: "Oswald", sans-serif;
-  /* font-family: "Montserrat", sans-serif;
-  font-weight: bold; */
-  font-size: 4vw;
+  font-size: 5vw;
 }
 #newsLetterEmail {
   font-family: "Oswald", sans-serif;
   font-size: 3vw;
 }
 
+#countdown_container {
+  /* font-style: italic; */
+  font-size: 80%;
+}
+.countdown_digit {
+  font-size: 150%;
+}
 .Countdown {
   /* background-color: red; */
   color: red;
   font-size: 85%;
 }
-
+.event_date {
+  font-size: 60%;
+}
 .event_right {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -211,7 +215,13 @@ main {
   font-size: 75%;
   color: yellow;
 }
-
+.eventlocation {
+  font-size: 60%;
+  color: #00bb00;
+}
+.eventaddress {
+  font-size: 55%;
+}
 .menu-item {
   font-size: 3vw;
   padding-bottom: 10px;

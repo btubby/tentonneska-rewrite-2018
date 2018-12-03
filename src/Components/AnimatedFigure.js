@@ -58,6 +58,7 @@ export default class AnimatedFigure extends React.Component {
 
     // this.audio = new Audio(this.url);
     this.audio = new Audio(this.props.sample ? this.props.sample : this.url);
+    this.audio.volume = this.props.volume ? this.props.volume : 1.0;
     console.log("sample:", this.props.sample);
     this.audio.load(this.props.sample);
 

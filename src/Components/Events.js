@@ -4,6 +4,7 @@ import Countdown from "./Countdown";
 
 import Bomb from "../Assets/bomb2.gif";
 import Pete from "../Assets/pete_animated.gif";
+import { Animated } from "react-animated-css";
 
 const BombContainer = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ const CountdownContainer = styled.div`
   justify-content: center;
   align-items: stretch;
   width: 74%;
-  height: 13vw;
+  height: 8vw;
   padding-top: 1vw;
 `;
 const EventDate = styled.div`
@@ -123,7 +124,14 @@ class Events extends Component {
     return (
       <center>
         <div className="events_container">
-          {EventsList}
+          <Animated
+            animationIn="slideInUp"
+            animationOut="fadeOut"
+            isVisible={true}
+          >
+            {EventsList}
+          </Animated>
+
           {/* <pre className="App--data">{JSON.stringify(events, null, 2)}</pre> */}
         </div>
       </center>

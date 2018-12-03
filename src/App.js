@@ -88,6 +88,10 @@ export default class App extends Component {
             href="https://fonts.googleapis.com/css?family=Oswald"
             rel="stylesheet"
           />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+          />
         </Helmet>
 
         <Sidebar />

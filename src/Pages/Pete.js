@@ -3,9 +3,22 @@ import React from "react";
 import AnimatedFigure from "../Components/AnimatedFigure";
 import Peter from "../Assets/pete_animated.gif";
 import PeterStill from "../Assets/pete_still.gif";
+
 import Will from "../Assets/will_animated.gif";
 import WillStill from "../Assets/will_still2.gif";
-import Bass from "../Assets/WODloopBASS.mp3";
+
+import Luke from "../Assets/luke2.gif";
+import LukeStill from "../Assets/luke2_still.gif";
+
+import Clive from "../Assets/clive.gif";
+import CliveStill from "../Assets/clive_still.gif";
+
+//import Bass from "../Assets/WODloopBASS.mp3";
+import Bass from "../Assets/wodbass.mp3";
+
+import Drums from "../Assets/fulldrums.mp3";
+
+import Guitar from "../Assets/wodguit.mp3";
 
 import styled from "styled-components";
 import Video from "../Components/Video";
@@ -23,7 +36,7 @@ const Container = styled.div`
 const FlexContainer = styled.div`
   display: flex;
   width: 80%;
-  padding-left: 10%;
+  // padding-left: 10%;
   padding-right: 10%;
   // background: red;
 `;
@@ -34,30 +47,35 @@ class Pete extends React.Component {
       <Container>
         <FlexContainer>
           <AnimatedFigure
-            animation={Peter}
-            stillFrame={PeterStill}
-            width={"150%"}
-          />
-          <AnimatedFigure
             animation={Will}
             stillFrame={WillStill}
             sample={Bass}
-            width={"100%"}
+            width={"150%"}
+            loop={true}
           />
           <AnimatedFigure
             animation={Peter}
             stillFrame={PeterStill}
-            width={"100%"}
+            width={"130%"}
+            volume={0.3}
+          />
+
+          <AnimatedFigure
+            animation={Luke}
+            stillFrame={LukeStill}
+            width={"150%"}
+            sample={Guitar}
+            loop={true}
           />
           <AnimatedFigure
-            animation={Will}
-            stillFrame={WillStill}
-            width={"150%"}
-            sample={Bass}
+            animation={Clive}
+            stillFrame={CliveStill}
+            width={"180%"}
+            sample={Drums}
             loop={true}
           />
         </FlexContainer>
-        <Video url="https://www.youtube.com/watch?v=5xVymfmXKko" />
+        {/* <Video url="https://www.youtube.com/watch?v=5xVymfmXKko" /> */}
       </Container>
     );
   }
