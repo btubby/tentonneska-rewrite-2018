@@ -1,8 +1,8 @@
 import React from "react";
 
 import AnimatedFigure from "../Components/AnimatedFigure";
-import Peter from "../Assets/pete_animated.gif";
-import PeterStill from "../Assets/pete_still.gif";
+import Pete from "../Assets/pete.gif";
+import PeteStill from "../Assets/pete_still.gif";
 
 import Will from "../Assets/will_animated.gif";
 import WillStill from "../Assets/will_still2.gif";
@@ -23,7 +23,7 @@ import Guitar from "../Assets/wodguit.mp3";
 import styled from "styled-components";
 import Video from "../Components/Video";
 
-const Container = styled.div`
+const ColouredBackround = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -35,52 +35,52 @@ const Container = styled.div`
 `;
 const FlexContainer = styled.div`
   display: flex;
-  width: 80%;
+  justify-content: center;
+  width: 90%;
   // padding-left: 10%;
-  padding-right: 10%;
+  // padding-right: 10%;
   // background: red;
 `;
 
-class Pete extends React.Component {
+export default class Geezer extends React.Component {
   render() {
     return (
-      <Container>
+      <ColouredBackround>
         <FlexContainer>
           <AnimatedFigure
             animation={Will}
             stillFrame={WillStill}
             sample={Bass}
-            width={"150%"}
+            width={"120%"}
             loop={true}
           />
           <AnimatedFigure
-            animation={Peter}
-            stillFrame={PeterStill}
-            width={"130%"}
+            animation={Pete}
+            // stillFrame={PeterStill}
+            width={"100%"}
             volume={0.3}
           />
 
           <AnimatedFigure
             animation={Luke}
             stillFrame={LukeStill}
-            width={"150%"}
+            width={"130%"}
             sample={Guitar}
             loop={true}
           />
           <AnimatedFigure
             animation={Clive}
             stillFrame={CliveStill}
-            width={"180%"}
+            width={"130%"}
             sample={Drums}
             loop={true}
           />
         </FlexContainer>
         {/* <Video url="https://www.youtube.com/watch?v=5xVymfmXKko" /> */}
-      </Container>
+      </ColouredBackround>
     );
   }
 }
-export default Pete;
 
 //   -rw----r--. 1 user_1081867768 vweb 158170 Nov 28  2017 Aay01.wav
 // -rw----r--. 1 user_1081867768 vweb 211574 Nov 28  2017 AhAoow01.wav
