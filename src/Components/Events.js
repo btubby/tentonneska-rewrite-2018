@@ -2,23 +2,16 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Countdown from "./Countdown";
 
-import Bomb from "../Assets/bomb2.gif";
-import Pete from "../Assets/pete_animated.gif";
+import Bomb from "../Assets/bomb_coloured.gif";
 import { Animated } from "react-animated-css";
 
 const BombContainer = styled.div`
-  position: relative;
-  top: 3vw;
-  left: 9vw;
-  text-align: right;
+  position: absolute;
+  top: 2vw;
+  left: -12vw;
+  // text-align: right;
   z-index: 200;
   width: 50%;
-`;
-
-const PeteContainer = styled.span`
-  position: relative;
-  top: -11vw;
-  left: -30vw;
 `;
 const CountdownContainer = styled.div`
   display: flex;
@@ -62,24 +55,16 @@ class Events extends Component {
       const nextEventString = `${nextEvent.getFullYear()}-${nextEvent.getMonth() +
         1}-${nextEventDay}T${nextEvent.getHours()}:${nextEventMinutes}:00`;
 
-      // console.log(nextEventString);
-      // console.log("YEAR: " + nextEvent.getFullYear());
-      // console.log("MONTH: " + nextEvent.getMonth() + 1);
-      // console.log("DAY: " + nextEventDay);
-      // console.log("HOURS: " + nextEvent.getHours());
-      // console.log("MINUTES: " + nextEventMinutes);
-
       let arr = [
         // Add the next event
         <div key={99} className="next swatch">
           <CountdownContainer>
             <Countdown date={`${nextEventString}`} width="50%" />
             <BombContainer>
-              <img src={Bomb} alt="" width="60%" />
+              <img src={Bomb} alt="" width="80%" />
             </BombContainer>
           </CountdownContainer>
           <Event
-            pete={false}
             title={events[0].gig_title}
             location={events[0].gig_location_s}
             address={events[0].gig_address_s}
@@ -101,13 +86,11 @@ class Events extends Component {
         events.map(function(item, i) {
           return (
             <Event
-              pete={false}
               key={i}
               title={item.gig_title}
               location={item.gig_location_s}
               address={item.gig_address_s}
               date={item.datestring}
-              //   class={`swatch gig ${eventClasses[i]}`}
               class={`swatch gig`}
               linker={
                 "https://www.google.com/search?q=ten+tonne+ska+" +
@@ -139,29 +122,13 @@ class Events extends Component {
   }
 }
 const Event = props => (
-  //   <SearchLink href="https://www.google.com/search?q=ten+tonne+ska">
   <SearchLink target="_blank" href={props.linker}>
     <div className={props.class}>
       <EventTitle>{props.title}</EventTitle>
       <EventDate>{props.date}</EventDate>
       <EventLocation>{props.location}</EventLocation>
       <EventAddress>{props.address}</EventAddress>
-      {props.pete && (
-        <PeteContainer>
-          <img src={Pete} alt="" width="50%" />
-        </PeteContainer>
-      )}
     </div>
   </SearchLink>
 );
-// {
-//   "gig_title": "DIG IT!",
-//   "gig_location": "<br>The Jolly Farmers",
-//   "gig_location_s": "The Jolly Farmers",
-//   "gig_address": "<br>7 Purley Rd, Purley CR8 2HA",
-//   "gig_address_s": "7 Purley Rd, Purley CR8 2HA",
-//   "gig_date": "Fri 28th September",
-//   "gig_time": ""
-// },
-
 export default Events;

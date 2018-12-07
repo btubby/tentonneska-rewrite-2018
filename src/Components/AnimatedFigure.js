@@ -2,6 +2,9 @@ import React from "react";
 import GifPlayer from "react-gif-player";
 import styled from "styled-components";
 
+import ReactHowler from "react-howler";
+//https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js
+
 const Images = [
   "aaaah02",
   "AhAoow01",
@@ -57,23 +60,23 @@ export default class AnimatedFigure extends React.Component {
       ".wav";
 
     // this.audio = new Audio(this.url);
-    this.audio = new Audio(this.props.sample ? this.props.sample : this.url);
-    this.audio.volume = this.props.volume ? this.props.volume : 1.0;
-    console.log("sample:", this.props.sample);
-    this.audio.load(this.props.sample);
+    // this.audio = new Audio(this.props.sample ? this.props.sample : this.url);
+    // this.audio.volume = this.props.volume ? this.props.volume : 1.0;
+    // console.log("sample:", this.props.sample);
+    // this.audio.load(this.props.sample);
 
-    var self = this;
-    this.audio.onended = event => {
-      console.log("finished plackback ", self.url);
+    // var self = this;
+    // this.audio.onended = event => {
+    //   console.log("finished plackback ", self.url);
 
-      if (this.props.loop) {
-        self.audio.currentTime = 0;
-        self.audio.play();
-      } else {
-        this.pauseGif(true);
-        this.setState({ play: !this.state.play });
-      }
-    };
+    //   if (this.props.loop) {
+    //     self.audio.currentTime = 0;
+    //     self.audio.play();
+    //   } else {
+    //     this.pauseGif(true);
+    //     this.setState({ play: !this.state.play });
+    //   }
+    // };
 
     // this.audio.onerror = () => {
     //   console.log("Sound file SoundFileURL.mp3 failed to load.");
@@ -83,19 +86,32 @@ export default class AnimatedFigure extends React.Component {
     console.log("toggleAnimation, state:", this.state.play);
     this.setState({ play: !this.state.play });
 
-    if (this.state.play) {
-      console.log("playing");
-      this.audio.play();
-    } else {
-      console.log("stopped");
-      this.audio.pause();
-      this.audio.currentTime = 0;
-    }
+    // if (this.state.play) {
+    //   // this.audio.play();
+    //   this.player.load();
+    //   this.player.play();
+    //   console.log("playing: " + this.player.duration());
+    // } else {
+    //   this.player.stop();
+    //   console.log("stopped");
+
+    // this.audio.pause();
+    // this.audio.currentTime = 0;
+    // }
     // this.state.play ? this.audio.play() : this.audio.pause();
   }
   render() {
     return (
       <FigureContainer>
+        <ReactHowler
+          src={this.props.sample}
+          // src="http://goldfirestudios.com/proj/howlerjs/sound.ogg"
+          playing={!this.state.play}
+          loop={true}
+          preload={true}
+          // sprite={[100, 1000, true]}
+          ref={ref => (this.player = ref)}
+        />
         <GifPlayer
           gif={this.props.animation}
           still={this.props.stillFrame}

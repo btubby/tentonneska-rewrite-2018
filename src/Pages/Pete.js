@@ -1,8 +1,9 @@
 import React from "react";
 
 import AnimatedFigure from "../Components/AnimatedFigure";
-import Pete from "../Assets/pete.gif";
-import PeteStill from "../Assets/pete_still.gif";
+
+// import Pete from "../Assets/pete.gif";
+// import PeteStill from "../Assets/pete_still.gif";
 
 import Will from "../Assets/will_animated.gif";
 import WillStill from "../Assets/will_still2.gif";
@@ -13,15 +14,14 @@ import LukeStill from "../Assets/luke2_still.gif";
 import Clive from "../Assets/clive.gif";
 import CliveStill from "../Assets/clive_still.gif";
 
-//import Bass from "../Assets/WODloopBASS.mp3";
-import Bass from "../Assets/wodbass.mp3";
-
-import Drums from "../Assets/fulldrums.mp3";
+// import Bass from "../Assets/wodbass.mp3";
+// import Drums from "../Assets/fulldrums_crop.mp3";
+// import Drums from "http://tubbycreative.com/loops/fulldrums.mp3";
 
 import Guitar from "../Assets/wodguit.mp3";
 
 import styled from "styled-components";
-import Video from "../Components/Video";
+// import Video from "../Components/Video";
 
 const ColouredBackround = styled.div`
   position: fixed;
@@ -50,29 +50,29 @@ export default class Geezer extends React.Component {
           <AnimatedFigure
             animation={Will}
             stillFrame={WillStill}
-            sample={Bass}
+            sample={"http://tubbycreative.com/loops/wodbass.mp3"}
             width={"120%"}
             loop={true}
           />
-          <AnimatedFigure
+          {/* <AnimatedFigure
             animation={Pete}
-            // stillFrame={PeterStill}
+            stillFrame={PeteStill}
             width={"100%"}
             volume={0.3}
-          />
+          /> */}
 
           <AnimatedFigure
             animation={Luke}
             stillFrame={LukeStill}
             width={"130%"}
-            sample={Guitar}
+            sample={"http://tubbycreative.com/loops/wodguit.mp3"}
             loop={true}
           />
           <AnimatedFigure
             animation={Clive}
             stillFrame={CliveStill}
             width={"130%"}
-            sample={Drums}
+            sample={"http://tubbycreative.com/loops/fulldrums.mp3"}
             loop={true}
           />
         </FlexContainer>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Loader from "../Assets/TTSTurntable.png";
 import Video from "../Components/Video";
 import styled from "styled-components";
+// import { Animated } from "react-animated-css";
 
 const Container = styled.div`
   margin: auto;
@@ -33,9 +34,15 @@ class Newsletter extends Component {
       <div>
         <center>
           <Container>
+            {/* <Animated
+              animationIn="slideInUp"
+              animationOut="fadeOut"
+              isVisible={true}
+            > */}
             <Video url="https://www.youtube.com/watch?v=o8QYcI6x6M0" />
             <Video url="https://www.youtube.com/watch?v=1IetxWvCFd4" />
             <Video url="https://www.youtube.com/watch?v=Y7cyD3hL3Kc" />
+            {/* </Animated> */}
           </Container>
         </center>
       </div>

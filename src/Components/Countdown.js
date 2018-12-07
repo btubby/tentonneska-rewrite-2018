@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 const CCountdown = styled.div`
   color: red;
-  width: 50%;
-  font-size: 5vw;
+  // width: 50%;
+  font-size: 7vw;
 `;
 
 const CountdownDigit = styled.span`
@@ -94,40 +94,28 @@ class Countdown extends Component {
 
     return (
       <CCountdown>
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <CountdownDigit>
-              {this.addLeadingZeros(countDown.days)}
-            </CountdownDigit>
-            <span>{countDown.days === 1 ? "DAY" : "DAYS"}</span>
-          </span>
+        <span>
+          <CountdownDigit>
+            {this.addLeadingZeros(countDown.days)}
+          </CountdownDigit>
+          <span>{countDown.days === 1 ? "DAY" : "DAYS"}</span>
         </span>
 
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <CountdownDigit>
-              {this.addLeadingZeros(countDown.hours)}
-            </CountdownDigit>
-            <span>HOURS</span>
-          </span>
+        <span>
+          <CountdownDigit>
+            {this.addLeadingZeros(countDown.hours)}
+          </CountdownDigit>
+          <span>HOURS</span>
         </span>
 
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <CountdownDigit>
-              {this.addLeadingZeros(countDown.min)}
-            </CountdownDigit>
-            <span>MIN</span>
-          </span>
+        <span>
+          <CountdownDigit>{this.addLeadingZeros(countDown.min)}</CountdownDigit>
+          <span>MIN</span>
         </span>
 
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <CountdownDigit>
-              {this.addLeadingZeros(countDown.sec)}
-            </CountdownDigit>
-            <span>SEC</span>
-          </span>
+        <span>
+          <CountdownDigit>{this.addLeadingZeros(countDown.sec)}</CountdownDigit>
+          <span>SEC</span>
         </span>
       </CCountdown>
     );
