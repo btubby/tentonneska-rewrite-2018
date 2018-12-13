@@ -1,7 +1,12 @@
 import React from "react";
-import Events from "../Components/Events";
+import Events from "../Components/Events/Events";
 import Loader from "../Components/Loader";
+import ReactGA from "react-ga";
 
+function initializeReactGA() {
+  ReactGA.initialize("UA-131014502-1");
+  ReactGA.pageview("/homepage");
+}
 const days = [
   "Sunday",
   "Monday",
@@ -32,11 +37,11 @@ export default class Live extends React.Component {
     this.state = {
       loading: true
     };
-  }
-  componentDidMount() {
-    this.setState({ loading: true });
 
-    let sheet_id = "1kE0fM_01RpTDuOYWKASbvK5vwhlTJ35DrsEVeFOKueQ";
+    // this.formatEvent = this.formatEvent.bind(this);
+  }
+
+  getGoogleSheetData(sheet_id) {
     let url =
       "https://spreadsheets.google.com/feeds/list/" +
       sheet_id +
@@ -73,6 +78,13 @@ export default class Live extends React.Component {
         console.error(error);
       });
   }
+
+  componentDidMount() {
+    initializeReactGA();
+    this.setState({ loading: true });
+    let sheet_id = "1kE0fM_01RpTDuOYWKASbvK5vwhlTJ35DrsEVeFOKueQ";
+    this.getGoogleSheetData(sheet_id);
+  }
   render() {
     return this.state.loading ? (
       <Loader />
@@ -84,6 +96,26 @@ export default class Live extends React.Component {
   }
 }
 
+// ############################################################################
+
+function formatEvent(event) {
+  return {
+    gig_title: event.gsx$title.$t,
+    gig_location:
+      typeof event.gsx$venue !== "undefined" ? "<br>" + event.gsx$venue.$t : "",
+    gig_location_s:
+      typeof event.gsx$venue !== "undefined" ? event.gsx$venue.$t : "",
+    gig_address:
+      typeof event.gsx$address !== "undefined"
+        ? "<br>" + event.gsx$address.$t
+        : "",
+    gig_address_s:
+      typeof event.gsx$address !== "undefined" ? event.gsx$address.$t : "",
+
+    gig_date: typeof event.gsx$date !== "undefined" ? event.gsx$date.$t : "",
+    gig_time: typeof event.gsxtime !== "undefined" ? event.gsx$time.$t : ""
+  };
+}
 function parseDate(d) {
   var input = d.split(" ");
   var dateValue = input[0].split(":") + "";
@@ -105,22 +137,4 @@ function parseDate(d) {
     timePieces[0],
     timePieces[1]
   );
-}
-function formatEvent(event) {
-  return {
-    gig_title: event.gsx$title.$t,
-    gig_location:
-      typeof event.gsx$venue !== "undefined" ? "<br>" + event.gsx$venue.$t : "",
-    gig_location_s:
-      typeof event.gsx$venue !== "undefined" ? event.gsx$venue.$t : "",
-    gig_address:
-      typeof event.gsx$address !== "undefined"
-        ? "<br>" + event.gsx$address.$t
-        : "",
-    gig_address_s:
-      typeof event.gsx$address !== "undefined" ? event.gsx$address.$t : "",
-
-    gig_date: typeof event.gsx$date !== "undefined" ? event.gsx$date.$t : "",
-    gig_time: typeof event.gsxtime !== "undefined" ? event.gsx$time.$t : ""
-  };
 }

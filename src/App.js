@@ -7,11 +7,10 @@ import Media from "./Pages/Media";
 import Newsletter from "./Pages/Newsletter";
 import Geezer from "./Pages/Geezer";
 import Pete from "./Pages/Pete";
+import Pete2 from "./Pages/Pete2";
 
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-
-// const REACT_VERSION = React.version;
 
 const Header = styled.div`
   background-color: black;
@@ -107,6 +106,7 @@ export default class App extends Component {
             <Route exact path={"/news"} component={Newsletter} />
             <Route exact path={"/geezer"} component={Geezer} />
             <Route exact path={"/pete"} component={Pete} />
+            <Route exact path={"/pete2"} component={Pete2} />
           </PageContainer>
         </main>
       </Container>

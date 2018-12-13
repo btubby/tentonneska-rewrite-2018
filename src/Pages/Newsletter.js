@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import CaptureEmailAddress from "../Components/CaptureEmailAddress";
 import styled from "styled-components";
+import ReactGA from "react-ga";
+
+function initializeReactGA() {
+  ReactGA.initialize("UA-131014502-1");
+  ReactGA.pageview("/contact");
+}
 
 const Red = styled.div`
   color: red;
@@ -26,7 +32,11 @@ const Wrapper = styled.div`
   padding-top: 30px;
   padding-bottom: 50px;
 `;
+
 class Newsletter extends Component {
+  componentDidMount() {
+    initializeReactGA();
+  }
   render() {
     return (
       <div>

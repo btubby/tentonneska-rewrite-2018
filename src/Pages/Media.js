@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import Loader from "../Assets/TTSTurntable.png";
 import Video from "../Components/Video";
 import styled from "styled-components";
-// import { Animated } from "react-animated-css";
+import ReactGA from "react-ga";
+
+function initializeReactGA() {
+  ReactGA.initialize("UA-131014502-1");
+  ReactGA.pageview("/media");
+}
 
 const Container = styled.div`
   margin: auto;
@@ -22,7 +27,7 @@ class Newsletter extends Component {
     };
   }
   componentDidMount() {
-    // this.setState({ loading: false });
+    initializeReactGA();
   }
 
   render() {
@@ -41,7 +46,7 @@ class Newsletter extends Component {
             > */}
             <Video url="https://www.youtube.com/watch?v=o8QYcI6x6M0" />
             <Video url="https://www.youtube.com/watch?v=1IetxWvCFd4" />
-            <Video url="https://www.youtube.com/watch?v=Y7cyD3hL3Kc" />
+            <Video url="https://www.youtube.com/watch?v=V_8X1cfaI0o" />
             {/* </Animated> */}
           </Container>
         </center>

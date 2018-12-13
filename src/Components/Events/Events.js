@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Countdown from "./Countdown";
+import Countdown from "../Countdown";
 
-import Bomb from "../Assets/bomb_coloured.gif";
+import Bomb from "../../Assets/bombyellow.gif";
 import { Animated } from "react-animated-css";
 
 const BombContainer = styled.div`
   position: absolute;
   top: 2vw;
-  left: -12vw;
+  left: -6vw;
   // text-align: right;
   z-index: 200;
   width: 50%;
@@ -21,19 +21,29 @@ const CountdownContainer = styled.div`
   height: 8vw;
   padding-top: 1vw;
 `;
-const EventDate = styled.div`
+const EventDateNext = styled.div`
   color: white;
-  font-size: 60%;
+  font-size: 40%;
+`;
+const EventDate = styled.div`
+  color: red;
+  font-size: 110%;
 `;
 const EventTitle = styled.div`
   color: #ffc703;
-  font-size: 75%;
+  font-size: 90%;
 `;
 const EventLocation = styled.div`
+  color: #00bb00;
+`;
+const EventLocationNext = styled.div`
   font-size: 60%;
   color: #00bb00;
 `;
 const EventAddress = styled.div`
+  color: white;
+`;
+const EventAddressNext = styled.div`
   color: white;
   font-size: 55%;
 `;
@@ -61,7 +71,7 @@ class Events extends Component {
           <CountdownContainer>
             <Countdown date={`${nextEventString}`} width="50%" />
             <BombContainer>
-              <img src={Bomb} alt="" width="80%" />
+              <img src={Bomb} alt="" width="50%" />
             </BombContainer>
           </CountdownContainer>
           <Event
@@ -70,6 +80,7 @@ class Events extends Component {
             address={events[0].gig_address_s}
             date={events[0].datestring}
             class={`nextgig`}
+            nextgig={true}
             linker={
               "https://www.google.com/search?q=ten+tonne+ska+" +
               events[0].gig_location_s.split(" ").join("+") +
@@ -92,6 +103,7 @@ class Events extends Component {
               address={item.gig_address_s}
               date={item.datestring}
               class={`swatch gig`}
+              nextgig={false}
               linker={
                 "https://www.google.com/search?q=ten+tonne+ska+" +
                 item.gig_location_s.split(" ").join("+") +
@@ -125,9 +137,15 @@ const Event = props => (
   <SearchLink target="_blank" href={props.linker}>
     <div className={props.class}>
       <EventTitle>{props.title}</EventTitle>
-      <EventDate>{props.date}</EventDate>
-      <EventLocation>{props.location}</EventLocation>
-      <EventAddress>{props.address}</EventAddress>
+
+      {props.nextgig && <EventDateNext>{props.date}</EventDateNext>}
+      {props.nextgig || <EventDate>{props.date}</EventDate>}
+
+      {props.nextgig && <EventLocationNext>{props.location}</EventLocationNext>}
+      {props.nextgig || <EventLocation>{props.location}</EventLocation>}
+
+      {props.nextgig && <EventAddressNext>{props.address}</EventAddressNext>}
+      {props.nextgig || <EventAddress>{props.address}</EventAddress>}
     </div>
   </SearchLink>
 );
