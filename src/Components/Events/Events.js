@@ -58,13 +58,18 @@ class Events extends Component {
     if (this.props.thedata) {
       let events = this.props.thedata;
       const nextEvent = events[0].dateObject;
+      console.log("next gig:", nextEvent);
       const nextEventMinutes =
         (nextEvent.getMinutes() < 10 ? "0" : "") + nextEvent.getMinutes();
       const nextEventDay =
         (nextEvent.getDate() < 10 ? "0" : "") + nextEvent.getDate();
-      const nextEventString = `${nextEvent.getFullYear()}-${nextEvent.getMonth() +
-        1}-${nextEventDay}T${nextEvent.getHours()}:${nextEventMinutes}:00`;
+      const nextEventMonth = nextEvent.getMonth() + 1;
+      const formattednextEventMonth = ("0" + nextEventMonth).slice(-2);
 
+      const nextEventString = `${nextEvent.getFullYear()}-${formattednextEventMonth}-${nextEventDay}T${nextEvent.getHours()}:${nextEventMinutes}:00`;
+
+      console.log("nextEventDay", nextEventDay);
+      console.log("nextEventString", nextEventString);
       let arr = [
         // Add the next event
         <div key={99} className="next swatch">
