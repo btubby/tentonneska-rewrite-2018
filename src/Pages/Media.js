@@ -12,11 +12,9 @@ function initializeReactGA() {
 const Container = styled.div`
   margin: auto;
   width: 80%;
-  /* border: 7px solid red; */
   padding: 10px;
-  /* background-color: white; */
   color: black;
-  padding-top: 200px;
+  padding-top: 2vw;
 `;
 
 class Newsletter extends Component {
