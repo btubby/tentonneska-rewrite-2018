@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
 import Home from "./Pages/Home";
 import Media from "./Pages/Media";
+import Media2 from "./Pages/Media2";
 import Newsletter from "./Pages/Newsletter";
 import Geezer from "./Pages/Geezer";
 import Pete from "./Pages/Pete";
@@ -53,7 +54,7 @@ const BestBand = styled.div`
 
 const Images = [
   "http://tubbycreative.com/TTSbacking0.jpg",
-  "http://tubbycreative.com/TTSbacking1.jpg",
+  // "http://tubbycreative.com/TTSbacking1.jpg",
   "http://tubbycreative.com/TTSbacking2.jpg",
   "http://tubbycreative.com/TTSbacking3.jpg",
   "http://tubbycreative.com/TTSbacking4.jpg",
@@ -103,6 +104,7 @@ export default class App extends Component {
           <PageContainer>
             <Route exact path={"/"} component={Home} />
             <Route exact path={"/media"} component={Media} />
+            <Route exact path={"/media2"} component={Media2} />
             <Route exact path={"/news"} component={Newsletter} />
             <Route exact path={"/geezer"} component={Geezer} />
             <Route exact path={"/pete"} component={Pete} />

@@ -82,7 +82,7 @@ class Sidebar extends React.Component {
         styles={styles}
         pageWrapId={"page-wrap"}
         outerContainerId={"outer-container"}
-        width={"25%"}
+        width={"12%"}
       >
         <SidebarMenu />
         <MenuItem>
