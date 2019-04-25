@@ -2,14 +2,14 @@ import React from "react";
 
 import AnimatedFigure from "../Components/AnimatedFigure/AnimatedFigure";
 
-import Pete from "../Assets/pete.gif";
-import PeteStill from "../Assets/pete_still.gif";
+import Pete from "../Assets/TTSAnimationColPete.gif";
+import PeteStill from "../Assets/TTSAnimationColPete_still.gif";
 
-import Will from "../Assets/will_animated.gif";
-import WillStill from "../Assets/will_still2.gif";
+import Will from "../Assets/TTSAnimationColWill.gif";
+import WillStill from "../Assets/TTSAnimationColWill_still.gif";
 
-import Luke from "../Assets/luke1.gif";
-import LukeStill from "../Assets/luke_still.gif";
+import Luke from "../Assets/TTSAnimationColLuke.gif";
+import LukeStill from "../Assets/TTSAnimationColLuke_still.gif";
 
 import Clive from "../Assets/clive2.gif";
 import CliveStill from "../Assets/clive2_still.gif";
