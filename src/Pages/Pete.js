@@ -23,6 +23,10 @@ import styled from "styled-components";
 // import Video from "../Components/Video";
 import ReactGA from "react-ga";
 
+
+import { Animated } from "react-animated-css";
+
+
 function initializeReactGA() {
   ReactGA.initialize("UA-131014502-1");
   ReactGA.pageview("/geezer");
@@ -94,6 +98,12 @@ export default class Geezer extends React.Component {
   render() {
     return (
       <ColouredBackround>
+             <Animated
+            animationIn="slideInUp"
+            animationOut="fadeOut"
+            isVisible={true}
+          >
+         
         <FlexCol>
           <FlexContainer>
             <AnimatedFigure
@@ -149,7 +159,7 @@ export default class Geezer extends React.Component {
             ))}
           </FlexContainer>
         </FlexCol>
-
+        </Animated>
         {/* <Video url="https://www.youtube.com/watch?v=5xVymfmXKko" /> */}
       </ColouredBackround>
     );

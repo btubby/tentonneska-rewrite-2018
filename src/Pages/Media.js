@@ -4,6 +4,8 @@ import Video from "../Components/Video";
 import styled from "styled-components";
 import ReactGA from "react-ga";
 
+import { Animated } from "react-animated-css";
+
 function initializeReactGA() {
   ReactGA.initialize("UA-131014502-1");
   ReactGA.pageview("/media");
@@ -37,15 +39,16 @@ class Newsletter extends Component {
       <div>
         <center>
           <Container>
-            {/* <Animated
-              animationIn="slideInUp"
-              animationOut="fadeOut"
-              isVisible={true}
-            > */}
+          <Animated
+            animationIn="slideInUp"
+            animationOut="fadeOut"
+            isVisible={true}
+          >
             <Video url="https://www.youtube.com/watch?v=o8QYcI6x6M0" />
             <Video url="https://www.youtube.com/watch?v=1IetxWvCFd4" />
             <Video url="https://www.youtube.com/watch?v=V_8X1cfaI0o" />
-            {/* </Animated> */}
+           
+          </Animated>
           </Container>
         </center>
       </div>

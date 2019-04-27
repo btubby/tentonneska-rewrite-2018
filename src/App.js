@@ -1,33 +1,62 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
-import Sidebar from "./Components/Sidebar";
+// import Sidebar from "./Components/Sidebar";
 import Home from "./Pages/Home";
 import Media from "./Pages/Media";
 import Media2 from "./Pages/Media2";
-import Newsletter from "./Pages/Newsletter";
-import Geezer from "./Pages/Geezer";
+import Contact from "./Pages/Contact";
+import HarvestedEmails from "./Pages/HarvestedEmails";
 import Pete from "./Pages/Pete";
 import Pete2 from "./Pages/Pete2";
 
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
-const Header = styled.div`
+const PageContainer = styled.div`
+  position: relative;
+  // top: 78px;
+  width: 100%;
+  border: red;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  `;
+  const Header = styled.div`
   background-color: black;
-  position: fixed;
-  top: 0;
   height: 77px;
   width: 100%;
   z-index: 100;
   opacity: 1;
-`;
-const PageContainer = styled.div`
-  position: relative;
-  top: 78px;
+  `;
+  const Header2 = styled.div`
+  display: flex;
+  background-color: #ffc703;
+  height: 30px;
   width: 100%;
-  border: red;
+  z-index: 100;
+  opacity: 1;
 `;
+const HeaderItem = styled.div`
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: red;
+    }
+  }
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 26px;
+  padding-top: 5px;
+
+  color: black;
+`;
+
 const BestBand = styled.div`
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
@@ -37,6 +66,7 @@ const BestBand = styled.div`
   z-index: 200;
   font-weight: bold;
   color: white;
+
   @media (min-width: 768px) {
     /* background: mediumseagreen; */
     color: white;
@@ -94,21 +124,42 @@ export default class App extends Component {
           />
         </Helmet>
 
-        <Sidebar />
+        {/* <Sidebar /> */}
         <main id="page-wrap">
-          <Header>
-            <BestBand>
-              <a href="/">THE BEST SKA AND REGGAE IN SE26</a>
-            </BestBand>
-          </Header>
+          <HeaderContainer>
+            <Header>
+              <BestBand>
+                <a href="/">THE BEST SKA AND REGGAE IN SE26</a>
+              </BestBand>
+            </Header>
+            <Header2>
+              <HeaderItem>
+                <a href="/">GIGS</a>
+              </HeaderItem>
+              <HeaderItem>
+                <a href="/media">MEDIA</a>
+              </HeaderItem>
+              <HeaderItem>
+                <a onclick="return confirm('Are you sure?')" href="/pete">
+                  PLAY
+                </a>
+              </HeaderItem>
+              <HeaderItem>
+                <a href="/contact">CONTACT</a>
+              </HeaderItem>
+            </Header2>
+          </HeaderContainer>
           <PageContainer>
             <Route exact path={"/"} component={Home} />
             <Route exact path={"/media"} component={Media} />
             <Route exact path={"/media2"} component={Media2} />
-            <Route exact path={"/news"} component={Newsletter} />
-            <Route exact path={"/geezer"} component={Geezer} />
+
+            <Route exact path={"/contact"} component={Contact} />
+
             <Route exact path={"/pete"} component={Pete} />
             <Route exact path={"/pete2"} component={Pete2} />
+
+            <Route exact path={"/harvested"} component={HarvestedEmails} />
           </PageContainer>
         </main>
       </Container>

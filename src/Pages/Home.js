@@ -2,6 +2,70 @@ import React from "react";
 import Events from "../Components/Events/Events";
 import Loader from "../Components/Loader";
 import ReactGA from "react-ga";
+import CaptureEmailAddress from "../Components/CaptureEmailAddress";
+
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex
+  flex-direction: column;
+
+  // @media (min-width: 768px) {
+  //   flex-direction: row;
+  // }
+`;
+const EmailHarvestContainer = styled.div`
+  width: 100%;
+  // border 1px solid red;
+
+  // @media (min-width: 768px) {
+  //   width: 40%;
+  // }
+`;
+const GigsContainer = styled.div`
+  width: 100%;
+  // border 1px solid green;
+
+  // @media (min-width: 768px) {
+  //   width: 60%;
+  // }
+`;
+
+const Yellow = styled.div`
+  color: #ffc703;
+  font-size: 75%;
+  text-align: center;
+`;
+
+const Swatch = styled.div`
+  // position: fixed;
+  // width: 30%;
+  margin-top: 20px !important;
+  margin-bottom: 4px !important;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  padding-top: 10px;
+  padding-right: 30px !important;
+  padding-bottom: 10px !important;
+  padding-left: 30px !important;
+
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 5vw;
+
+  // @media (min-width: 768px) {
+  //   position: relative;
+  //   width: 30%;
+  // }
+`;
 
 function initializeReactGA() {
   ReactGA.initialize("UA-131014502-1");
@@ -89,9 +153,18 @@ export default class Live extends React.Component {
     return this.state.loading ? (
       <Loader />
     ) : (
-      <div>
-        <Events thedata={this.state.data} />
-      </div>
+      <Container>
+        <EmailHarvestContainer>
+          <Swatch>
+            <Yellow>Get on the mailing list!</Yellow>
+            <CaptureEmailAddress />
+            {/* <img width='70%' src='http://tubbycreative.com/tts/headers/Bookdaband.png' /> */}
+          </Swatch>
+        </EmailHarvestContainer>
+        <GigsContainer>
+          <Events thedata={this.state.data} />
+        </GigsContainer>
+      </Container>
     );
   }
 }

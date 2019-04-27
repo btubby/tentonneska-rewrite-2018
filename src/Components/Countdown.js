@@ -5,7 +5,8 @@ import styled from "styled-components";
 const CCountdown = styled.div`
   color: red;
   // width: 50%;
-  font-size: 7vw;
+  font-size: 5vw;
+  line-height: 90%;
 `;
 
 const CountdownDigit = styled.span`
@@ -107,7 +108,6 @@ class Countdown extends Component {
           </CountdownDigit>
           <span>HOURS</span>
         </span>
-
         <span>
           <CountdownDigit>{this.addLeadingZeros(countDown.min)}</CountdownDigit>
           <span>MIN</span>

@@ -4,6 +4,8 @@ import CaptureEmailAddress from "../Components/CaptureEmailAddress";
 import styled from "styled-components";
 import ReactGA from "react-ga";
 
+import { Animated } from "react-animated-css";
+
 function initializeReactGA() {
   ReactGA.initialize("UA-131014502-1");
   ReactGA.pageview("/contact");
@@ -46,11 +48,17 @@ class Newsletter extends Component {
         </Helmet>
 
         <center>
+        <Animated
+            animationIn="slideInUp"
+            animationOut="fadeOut"
+            isVisible={true}
+          >
+
           <div className="events_container">
             <div className="next swatch">
               <Red>BOOKINGS 07980 743077</Red>
               <Wrapper>
-                <Yellow>ENTER YOUR EMAIL TO KEEP IN TOUCH</Yellow>
+                <Yellow>Get on the mailing list!</Yellow>
                 <CaptureEmailAddress />
                 {/* <img width='70%' src='http://tubbycreative.com/tts/headers/Bookdaband.png' /> */}
               </Wrapper>
@@ -64,6 +72,8 @@ class Newsletter extends Component {
               </FB>
             </div>
           </div>
+
+          </Animated>
         </center>
       </div>
     );

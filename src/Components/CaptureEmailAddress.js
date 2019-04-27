@@ -91,8 +91,8 @@ class CaptureEmailAddress extends Component {
             type="text"
             value={this.state.newData}
             onChange={this.handleChange}
-            defaultValue="Enter your email address here so we can keep in touch"
-            placeholder="Enter your email address here so we can keep in touch"
+            defaultValue="enter your email"
+            placeholder="enter your email"
             inputColor="rebeccapurple"
             autofocus
           />
