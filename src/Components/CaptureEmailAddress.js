@@ -11,7 +11,7 @@ const Input = styled.input`
   border: none;
   border-radius: 3px;
   width: 50%;
-  font-size: 15px;
+  font-size: 20px;
 `;
 const NewsLetterEmail = styled.div`
   font-family: "Montserrat", sans-serif;
@@ -94,7 +94,7 @@ class CaptureEmailAddress extends Component {
             defaultValue="enter your email"
             placeholder="enter your email"
             inputColor="rebeccapurple"
-            autofocus
+            autoFocus
           />
           <br />
           {/* <Input type="submit" defaultValue="SUBMIT" bgColor="yellow" inputColor="rebeccapurple" /> */}

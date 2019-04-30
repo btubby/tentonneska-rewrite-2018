@@ -59,6 +59,7 @@ class Events extends Component {
       let events = this.props.thedata;
       const nextEvent = events[0].dateObject;
       console.log("next gig:", nextEvent);
+      
       const nextEventMinutes =
         (nextEvent.getMinutes() < 10 ? "0" : "") + nextEvent.getMinutes();
       const nextEventDay =
@@ -74,21 +75,21 @@ class Events extends Component {
         // Add the next event
         <div key={99} className="next swatch">
           <CountdownContainer>
-            <Countdown date={`${nextEventString}`} width="50%" />
+            <Countdown date={`${nextEvent}`} width="50%" />
             <BombContainer>
               <img src={Bomb} alt="" width="50%" />
             </BombContainer>
           </CountdownContainer>
           <Event
-            title={events[0].gig_title}
-            location={events[0].gig_location_s}
-            address={events[0].gig_address_s}
+            title={events[0].TITLE}
+            location={events[0].VENUE}
+            address={events[0].ADDRESS}
             date={events[0].datestring}
             class={`nextgig`}
             nextgig={true}
             linker={
               "https://www.google.com/search?q=ten+tonne+ska+" +
-              events[0].gig_location_s.split(" ").join("+") +
+              events[0].VENUE.split(" ").join("+") +
               events[0].datestring.split(" ").join("+")
             }
             // key={999}
@@ -103,15 +104,15 @@ class Events extends Component {
           return (
             <Event
               key={i}
-              title={item.gig_title}
-              location={item.gig_location_s}
-              address={item.gig_address_s}
+              title={item.TITLE}
+              location={item.VENUE}
+              address={item.ADDRESS}
               date={item.datestring}
               class={`swatch gig`}
               nextgig={false}
               linker={
                 "https://www.google.com/search?q=ten+tonne+ska+" +
-                item.gig_location_s.split(" ").join("+") +
+                item.VENUE.split(" ").join("+") +
                 " " +
                 item.datestring.split(" ").join("+")
               }

@@ -13,6 +13,8 @@ import Pete2 from "./Pages/Pete2";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
+
+
 const PageContainer = styled.div`
   position: relative;
   // top: 78px;
@@ -140,13 +142,16 @@ export default class App extends Component {
                 <a href="/media">MEDIA</a>
               </HeaderItem>
               <HeaderItem>
-                <a onclick="return confirm('Are you sure?')" href="/pete">
+                {/* <a onClick="return confirm('Are you sure?')" href="/pete">
                   PLAY
-                </a>
+                </a> */}
               </HeaderItem>
               <HeaderItem>
                 <a href="/contact">CONTACT</a>
               </HeaderItem>
+
+
+             
             </Header2>
           </HeaderContainer>
           <PageContainer>

@@ -106,40 +106,61 @@ export default class Live extends React.Component {
   }
 
   getGoogleSheetData(sheet_id) {
-    let url =
-      "https://spreadsheets.google.com/feeds/list/" +
-      sheet_id +
-      "/od6/public/values?alt=json";
-    console.log("Talking to google sheets [" + url + "]");
-    fetch(url)
-      .then(response => response.json())
-      .then(responseJson => {
-        let a = [];
-        var now = new Date();
+    // let url =
+    //   "https://spreadsheets.google.com/feeds/list/" +
+    //   sheet_id +
+    //   "/od6/public/values?alt=json";
 
-        responseJson.feed.entry.forEach(function(event, index) {
-          let parsed_event = formatEvent(event);
-          let dateObject = parseDate(parsed_event.gig_date);
+let url= "https://sheets.googleapis.com/v4/spreadsheets/" + sheet_id + "/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=AIzaSyAolId7xBe6uh4ShlBnD09XvUX0hISV93U&alt=json";
+
+
+    console.log("Talking to google sheets [" + url + "]");
+    fetch(url).then(response => response.json()).then(data => {
+        // let a = [];
+        var now = new Date();
+        console.log('parsing...');
+
+        let batchRowValues = data.valueRanges[0].values;
+ 
+        console.log(batchRowValues);
+
+        const rows = [];
+        for (let i = 1; i < batchRowValues.length; i++) {
+          let rowObject = {};
+          for (let j = 0; j < batchRowValues[i].length; j++) {
+            rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
+          }
+          var parts = rowObject.DATE.split("/");
+          console.log('day:'+ parts[0]);
+          console.log('month:'+ parts[1]);
+          console.log('year:'+ parts[2]);
+
+          let dateObject = new Date(parts[1]+'/'+parts[0]+'/'+parts[2]);
 
           let hours = dateObject.getHours();
           let am_pm = hours < 12 ? "AM" : "PM"; // Set AM/PM
           hours = hours - 12;
-          parsed_event.datestring = `${
+          rowObject.datestring = `${
             days[dateObject.getDay()]
           }, ${dateObject.getDate()} ${
             months[dateObject.getMonth()]
           } ${dateObject.getFullYear()} ${hours}${am_pm}`;
-          parsed_event.dateObject = dateObject;
+          rowObject.dateObject = dateObject;
 
           if (dateObject >= now) {
-            a.push(parsed_event);
-            // console.log('gig in future!');
+            // a.push(rowObject);
+            rows.push(rowObject);
+            console.log(rowObject);
           }
-        });
-        this.setState({ data: a, loading: false });
+
+        }
+
+
+
+        this.setState({ data: rows, loading: false });
       })
       .catch(error => {
-        console.error(error);
+        console.error('Caught an error: ' + error);
       });
   }
 
@@ -171,43 +192,45 @@ export default class Live extends React.Component {
 
 // ############################################################################
 
-function formatEvent(event) {
-  return {
-    gig_title: event.gsx$title.$t,
-    gig_location:
-      typeof event.gsx$venue !== "undefined" ? "<br>" + event.gsx$venue.$t : "",
-    gig_location_s:
-      typeof event.gsx$venue !== "undefined" ? event.gsx$venue.$t : "",
-    gig_address:
-      typeof event.gsx$address !== "undefined"
-        ? "<br>" + event.gsx$address.$t
-        : "",
-    gig_address_s:
-      typeof event.gsx$address !== "undefined" ? event.gsx$address.$t : "",
+// function formatEvent(event) {
+//   console.log('event ' + event);
 
-    gig_date: typeof event.gsx$date !== "undefined" ? event.gsx$date.$t : "",
-    gig_time: typeof event.gsxtime !== "undefined" ? event.gsx$time.$t : ""
-  };
-}
-function parseDate(d) {
-  var input = d.split(" ");
-  var dateValue = input[0].split(":") + "";
-  let timeValue = "";
-  if (typeof input[1] === "undefined" || input[1] === null) {
-    // console.log("** no time for event, so hardcoding to 9pm");
-    timeValue = "21,00";
-  } else {
-    timeValue = input[1].split(":") + "";
-  }
-  console.log(`date[${dateValue}] time[${timeValue}]`);
-  var datePieces = dateValue.split("/");
-  var timePieces = timeValue.split(",");
-  //5 numbers specify year, month, day, hour, and minute
-  return new Date(
-    datePieces[2],
-    datePieces[1] - 1,
-    datePieces[0],
-    timePieces[0],
-    timePieces[1]
-  );
-}
+//   return {
+//     gig_title: event.gsx$title.$t,
+//     gig_location:
+//       typeof event.gsx$venue !== "undefined" ? "<br>" + event.gsx$venue.$t : "",
+//     gig_location_s:
+//       typeof event.gsx$venue !== "undefined" ? event.gsx$venue.$t : "",
+//     gig_address:
+//       typeof event.gsx$address !== "undefined"
+//         ? "<br>" + event.gsx$address.$t
+//         : "",
+//     gig_address_s:
+//       typeof event.gsx$address !== "undefined" ? event.gsx$address.$t : "",
+
+//     gig_date: typeof event.gsx$date !== "undefined" ? event.gsx$date.$t : "",
+//     gig_time: typeof event.gsxtime !== "undefined" ? event.gsx$time.$t : ""
+//   };
+// }
+// function parseDate(d) {
+//   var input = d.split(" ");
+//   var dateValue = input[0].split(":") + "";
+//   let timeValue = "";
+//   if (typeof input[1] === "undefined" || input[1] === null) {
+//     // console.log("** no time for event, so hardcoding to 9pm");
+//     timeValue = "21,00";
+//   } else {
+//     timeValue = input[1].split(":") + "";
+//   }
+//   console.log(`date[${dateValue}] time[${timeValue}]`);
+//   var datePieces = dateValue.split("/");
+//   var timePieces = timeValue.split(",");
+//   //5 numbers specify year, month, day, hour, and minute
+//   return new Date(
+//     datePieces[2],
+//     datePieces[1] - 1,
+//     datePieces[0],
+//     timePieces[0],
+//     timePieces[1]
+//   );
+// }
