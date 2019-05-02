@@ -131,20 +131,20 @@ let url= "https://sheets.googleapis.com/v4/spreadsheets/" + sheet_id + "/values:
             rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
           }
           var parts = rowObject.DATE.split("/");
-          console.log('day:'+ parts[0]);
-          console.log('month:'+ parts[1]);
-          console.log('year:'+ parts[2]);
+          // console.log('day:'+ parts[0]);
+          // console.log('month:'+ parts[1]);
+          // console.log('year:'+ parts[2]);
 
           let dateObject = new Date(parts[1]+'/'+parts[0]+'/'+parts[2]);
 
-          let hours = dateObject.getHours();
-          let am_pm = hours < 12 ? "AM" : "PM"; // Set AM/PM
-          hours = hours - 12;
+          // let hours = dateObject.getHours();
+          // let am_pm = hours < 12 ? "AM" : "PM"; // Set AM/PM
+          // hours = hours - 12;
           rowObject.datestring = `${
             days[dateObject.getDay()]
           }, ${dateObject.getDate()} ${
             months[dateObject.getMonth()]
-          } ${dateObject.getFullYear()} ${hours}${am_pm}`;
+          } ${dateObject.getFullYear()} 9pm`;
           rowObject.dateObject = dateObject;
 
           if (dateObject >= now) {

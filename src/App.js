@@ -142,9 +142,9 @@ export default class App extends Component {
                 <a href="/media">MEDIA</a>
               </HeaderItem>
               <HeaderItem>
-                {/* <a onClick="return confirm('Are you sure?')" href="/pete">
+                 <a href="/pete">
                   PLAY
-                </a> */}
+                </a> 
               </HeaderItem>
               <HeaderItem>
                 <a href="/contact">CONTACT</a>

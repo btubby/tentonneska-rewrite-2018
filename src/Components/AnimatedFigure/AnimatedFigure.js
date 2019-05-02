@@ -1,10 +1,8 @@
 import React from "react";
 import GifPlayer from "react-gif-player";
 import styled from "styled-components";
-
 import ReactHowler from "react-howler";
-
-import LoaderImg from "../../Assets/TTSTurntable.png";
+import Loader from "../../Assets/TTSTurntable.png";
 
 //https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js
 import raf from "raf"; // requestAnimationFrame polyfill
@@ -19,58 +17,67 @@ export default class AnimatedFigure extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playing: this.props.playOnLoad ? true : false
+      playing: this.props.playOnLoad,
+      loading : false,
+      sampleloading: true,
     };
   }
 
-  handlePlayToggle = () => {
-    const newState = !this.state.playing;
-    console.log(`LOOP:${this.props.loop}
-      ${this.props.animation} handlePlayToggle -> ${
-      this.state.playing
-    } -> ${newState}`);
-
-    this.setState({ playing: newState });
-  };
-  handleOnLoad = () => {
+    // BT THIS IS NOT WORKING
+    HowlerhandleOnLoad = () => {
     console.log("sample loaded");
-    this.setState({
-      loaded: true
-      // duration: this.player.duration()
-    });
+    this.setState({sampleloading: false });
   };
-  handleOnPlay = () => {
-    // console.log(`START ${this.props.sample}`);
-    // this.setState({
-    //   playing: true
-    // });
-    this.renderSeekPos();
+  HowlerhandleOnStop = () => {
+    this.setState({playing: false});
   };
-  handleOnStop = () => {
-    this.setState({
-      playing: false
-    });
-  };
-  handleOnEnd = () => {
+  HowlerhandleOnEnd = () => {
     if (!this.props.loop) {
-      this.setState({
-        playing: false
-      });
+      this.setState({playing: false});
       this.pauseGif();
     }
   };
+  HowlerhandleOnPlay = () => {
+    this.renderSeekPos();
+  };
   renderSeekPos = () => {
-    this.setState({
-      seek: this.player.seek()
-    });
+    this.setState({seek: this.player.seek()});
     if (this.state.playing) {
       this._raf = raf(this.renderSeekPos);
     }
   };
+
+  GifPlayerHandlePlayToggle = () => {
+    const newState = !this.state.playing;
+
+    console.log(`${this.props.animation} GifPlayerHandlePlayToggle -> ${
+      this.state.playing
+    } -> ${newState}`);
+    this.setState({ playing: newState });
+  };
+
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.playOnLoad !== nextProps.playOnLoad) {
+      this.GifPlayerHandlePlayToggle();
+
+      // FIXME THIS SHOULD BE CONDITIONAL
+      if (this.props.playOnLoad == false) {
+        this.pauseGif();
+      } else {
+          // play the damn gif
+          this.setState({ playing: true });
+      }
+    }
+  }
+
   render() {
-    // if (!this.state.loaded) {
-    // return <div>LOADING</div>;
-    // } else {
+
+    // return this.state.loading ? (
+    //   <div className="loading">
+    //     <img id="spinner" alt="" src={Loader} />
+    //   </div>
+    // ) : (
     return (
       <FigureContainer>
         {/* <p>
@@ -79,31 +86,34 @@ export default class AnimatedFigure extends React.Component {
           {this.state.seek !== undefined ? this.state.seek.toFixed(2) : "0.00"}
           {" / "}
           {this.state.duration ? this.state.duration.toFixed(2) : "NaN"}
+          <br/>
+          PLAYING:{this.state.playing}
         </p> */}
         <ReactHowler
-          src={this.props.sample}
-          // src="http://goldfirestudios.com/proj/howlerjs/sound.ogg"
+          src={this.props.sample} // src="http://goldfirestudios.com/proj/howlerjs/sound.ogg"
           playing={this.props.loop ? true : this.state.playing}
           volume={this.props.volume || 1}
           mute={!this.state.playing}
           loop={this.props.loop}
-          preload={true}
-          onLoad={this.handleOnLoad}
-          onPlay={this.handleOnPlay}
-          onStop={this.handleOnStop}
-          onEnd={this.handleOnEnd}
+         preload={true}
+          onLoad={this.HowlerhandleOnLoad}
+          onPlay={this.HowlerhandleOnPlay}
+          onStop={this.HowlerhandleOnStop}
+          onEnd={this.HowlerhandleOnEnd}
           ref={ref => (this.player = ref)}
         />
         <GifPlayer
-          gif={this.state.loaded ? this.props.animation : LoaderImg}
+        //  gif={this.state.loading ? Loader : this.props.animation }
+         gif={this.state.sampleloading ? Loader : (this.state.playing ? this.props.animation : this.props.stillFrame)}
           still={this.props.stillFrame}
           width={this.props.width}
-          onClick={this.handlePlayToggle}
+          onClick={this.GifPlayerHandlePlayToggle}
           pauseRef={pause => (this.pauseGif = pause)}
           autoplay={this.props.playOnLoad}
         />
       </FigureContainer>
-    );
-    // }
+    )
   }
+    
+  
 }

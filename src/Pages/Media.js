@@ -44,6 +44,7 @@ class Newsletter extends Component {
             animationOut="fadeOut"
             isVisible={true}
           >
+            <Video url="https://vimeo.com/333720604"/>
             <Video url="https://www.youtube.com/watch?v=o8QYcI6x6M0" />
             <Video url="https://www.youtube.com/watch?v=1IetxWvCFd4" />
             <Video url="https://www.youtube.com/watch?v=V_8X1cfaI0o" />

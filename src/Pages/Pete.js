@@ -2,17 +2,22 @@ import React from "react";
 
 import AnimatedFigure from "../Components/AnimatedFigure/AnimatedFigure";
 
-import Pete from "../Assets/TTSAnimationColPete.gif";
-import PeteStill from "../Assets/TTSAnimationColPete_still.gif";
+import Pete from "../Assets/TTSWODPete.png";
+import PeteStill from "../Assets/TTSWODPete_still.png";
 
-import Will from "../Assets/TTSAnimationColWill.gif";
-import WillStill from "../Assets/TTSAnimationColWill_still.gif";
 
-import Luke from "../Assets/TTSAnimationColLuke.gif";
-import LukeStill from "../Assets/TTSAnimationColLuke_still.gif";
+import Will from "../Assets/TTSWODWill.png";
+import WillStill from "../Assets/TTSWODWill_still.png";
 
-import Clive from "../Assets/clive2.gif";
-import CliveStill from "../Assets/clive2_still.gif";
+import Luke from "../Assets/TTSWODLuke.png";
+import LukeStill from "../Assets/TTSWODLuke_still.png";
+
+  
+import Clive from "../Assets/TTSWODClive.png";
+import CliveStill from "../Assets/TTSWODClive_still.png";
+
+import ButtonImage from "../Assets/TTSWODbutton.png";
+
 
 import Drums from "../Assets/wodd.wav";
 import Guitar from "../Assets/wodg.wav";
@@ -31,22 +36,31 @@ function initializeReactGA() {
   ReactGA.initialize("UA-131014502-1");
   ReactGA.pageview("/geezer");
 }
-
+const ButtonContainer = styled.div`
+  width: 50%;
+  // border: 1px solid red;
+`;
+export const Button = styled.button`
+  height: 3rem;
+  font-size: 2rem;
+  width: 40vw;
+  border-radius: 30px;
+  background-image: {ButtonImage}
+`;
 const ColouredBackround = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   overflow: auto;
-  background: #ffc703;
-  padding-top: 20vw;
+  padding-top: 5vw;
+  background-image: url("http://tubbycreative.com/FigGIFs/Geeza1back.jpg");
+  background-size: cover;
+  height:50%;
+ 
 `;
 const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   padding-left: 10%;
   padding-right: 10%;
+  height:50%
 `;
 const FlexCol = styled.div`
   display: flex;
@@ -91,58 +105,86 @@ const PeteSamples = [
 ];
 
 export default class Geezer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing_bass: false,
+      playing_guitar: false,
+      playing_drums: false,
+    };
+  }
+
   componentDidMount() {
+    document.body.style.backgroundImage = "url('www.tubbycreative.com/FigGIFs/TTSWODBeach.png')";
+    document.body.style.backgroundImage = "url('http://tubbycreative.com/FigGIFs/Geeza1back.jpg')";
+    
     initializeReactGA();
+
+    var that = this;
+    document.getElementById("butt").addEventListener('click', that.togglePlaying, false);
+  }
+
+
+  togglePlaying = (e) => {
+    /* get the element id and do the enum things here */
+    this.setState({playing_bass: !this.state.playing_bass});       
+    this.setState({playing_guitar: !this.state.playing_guitar}); 
+    this.setState({playing_drums: !this.state.playing_drums}); 
+    
   }
 
   render() {
     return (
       <ColouredBackround>
-             <Animated
+          <Animated
             animationIn="slideInUp"
             animationOut="fadeOut"
             isVisible={true}
           >
          
         <FlexCol>
+          <ButtonContainer>
+            <img src={ButtonImage} id="butt" />
+          </ButtonContainer>
           <FlexContainer>
-            <AnimatedFigure
+
+          <AnimatedFigure
               animation={Will}
               stillFrame={WillStill}
-              width={"50%"}
+              // width={"70%"}
               sample={Bass}
               loop={true}
-              playOnLoad={true}
+              playOnLoad={this.state.playing_bass}
             />
             <AnimatedFigure
               animation={Luke}
               stillFrame={LukeStill}
-              width={"50%"}
+              // width={"70%"}
               sample={Guitar}
               loop={true}
-              playOnLoad={true}
+              playOnLoad={this.state.playing_guitar}
             />
 
             <AnimatedFigure
               animation={Clive}
               stillFrame={CliveStill}
-              width={"100%"}
+              // width={"70%"}
               sample={Drums}
               loop={true}
-              playOnLoad={true}
+              playOnLoad={this.state.playing_drums}
             />
           </FlexContainer>
           <FlexContainer>
             <AnimatedFigure
               animation={Pete}
               stillFrame={PeteStill}
-              width={"80%"}
+              // width={"80%"}
               sample={Vocal}
               volume={0.3}
               loop={false}
               playOnLoad={false}
             />
-            {[...Array(10)].map((x, i) => (
+            {/* {[...Array(10)].map((x, i) => (
               <AnimatedFigure
                 animation={Pete}
                 stillFrame={PeteStill}
@@ -156,7 +198,7 @@ export default class Geezer extends React.Component {
                 loop={false}
                 playOnLoad={false}
               />
-            ))}
+            ))} */}
           </FlexContainer>
         </FlexCol>
         </Animated>
