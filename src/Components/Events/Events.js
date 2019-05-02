@@ -55,10 +55,10 @@ class Events extends Component {
   render() {
     let EventsList = [];
 
-    if (this.props.thedata) {
-      let events = this.props.thedata;
+    if (this.props.futureGigs) {
+      let events = this.props.futureGigs;
       const nextEvent = events[0].dateObject;
-      console.log("next gig:", nextEvent);
+      console.log("next gig:", events[0]);
       
       const nextEventMinutes =
         (nextEvent.getMinutes() < 10 ? "0" : "") + nextEvent.getMinutes();

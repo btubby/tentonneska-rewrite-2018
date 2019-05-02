@@ -8,10 +8,13 @@ const CCountdown = styled.div`
   font-size: 5vw;
   line-height: 90%;
 `;
-
 const CountdownDigit = styled.span`
   font-size: 100%;
   color: #ffc703;
+`;
+const CountdownDigitZero = styled.span`
+  font-size: 100%;
+  color: grey;
 `;
 class Countdown extends Component {
   constructor(props) {
@@ -97,20 +100,29 @@ class Countdown extends Component {
     return (
       <CCountdown>
         <span>
-          <CountdownDigit>
-            {this.addLeadingZeros(countDown.days)}
-          </CountdownDigit>
+          {countDown.days > 0 ?
+          <CountdownDigit>{this.addLeadingZeros(countDown.days)}</CountdownDigit>
+          :
+          <CountdownDigitZero>{this.addLeadingZeros(countDown.days)}</CountdownDigitZero>
+        }
           <span>{countDown.days === 1 ? "DAY" : "DAYS"}</span>
         </span>
 
         <span>
-          <CountdownDigit>
-            {this.addLeadingZeros(countDown.hours)}
-          </CountdownDigit>
+        {countDown.hours > 0 ?
+          <CountdownDigit>{this.addLeadingZeros(countDown.hours)}</CountdownDigit>
+          :
+          <CountdownDigitZero>{this.addLeadingZeros(countDown.hours)}</CountdownDigitZero>
+        }
           <span>HOURS</span>
         </span>
+
         <span>
+        {countDown.min > 0 ?
           <CountdownDigit>{this.addLeadingZeros(countDown.min)}</CountdownDigit>
+          :
+          <CountdownDigitZero>{this.addLeadingZeros(countDown.min)}</CountdownDigitZero>
+        }
           <span>MIN</span>
         </span>
 

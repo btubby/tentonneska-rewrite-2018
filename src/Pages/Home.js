@@ -98,32 +98,17 @@ const months = [
 export default class Live extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loading: true
-    };
-
-    // this.formatEvent = this.formatEvent.bind(this);
+    this.state = {loading: true};
   }
 
   getGoogleSheetData(sheet_id) {
-    // let url =
-    //   "https://spreadsheets.google.com/feeds/list/" +
-    //   sheet_id +
-    //   "/od6/public/values?alt=json";
-
-let url= "https://sheets.googleapis.com/v4/spreadsheets/" + sheet_id + "/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=AIzaSyAolId7xBe6uh4ShlBnD09XvUX0hISV93U&alt=json";
-
-
+    let url= "https://sheets.googleapis.com/v4/spreadsheets/" + sheet_id + "/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=AIzaSyAolId7xBe6uh4ShlBnD09XvUX0hISV93U&alt=json";
     console.log("Talking to google sheets [" + url + "]");
     fetch(url).then(response => response.json()).then(data => {
-        // let a = [];
         var now = new Date();
         console.log('parsing...');
-
         let batchRowValues = data.valueRanges[0].values;
- 
         console.log(batchRowValues);
-
         const rows = [];
         for (let i = 1; i < batchRowValues.length; i++) {
           let rowObject = {};
@@ -131,11 +116,10 @@ let url= "https://sheets.googleapis.com/v4/spreadsheets/" + sheet_id + "/values:
             rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
           }
           var parts = rowObject.DATE.split("/");
-          // console.log('day:'+ parts[0]);
-          // console.log('month:'+ parts[1]);
-          // console.log('year:'+ parts[2]);
-
           let dateObject = new Date(parts[1]+'/'+parts[0]+'/'+parts[2]);
+          dateObject.setHours(21); // HARDCODE 9pm at the moment BT 
+          // dateObject.setMinutes(0);  
+
 
           // let hours = dateObject.getHours();
           // let am_pm = hours < 12 ? "AM" : "PM"; // Set AM/PM
@@ -145,19 +129,17 @@ let url= "https://sheets.googleapis.com/v4/spreadsheets/" + sheet_id + "/values:
           }, ${dateObject.getDate()} ${
             months[dateObject.getMonth()]
           } ${dateObject.getFullYear()} 9pm`;
+
+          console.log(`datestring  ${rowObject.datestring}`);
           rowObject.dateObject = dateObject;
 
-          if (dateObject >= now) {
-            // a.push(rowObject);
+          if (dateObject >= now) { // we are not interested in historical gigs
             rows.push(rowObject);
-            console.log(rowObject);
           }
-
         }
 
-
-
         this.setState({ data: rows, loading: false });
+        console.log("ALL DATA:", rows)
       })
       .catch(error => {
         console.error('Caught an error: ' + error);
@@ -183,7 +165,7 @@ let url= "https://sheets.googleapis.com/v4/spreadsheets/" + sheet_id + "/values:
           </Swatch>
         </EmailHarvestContainer>
         <GigsContainer>
-          <Events thedata={this.state.data} />
+          <Events futureGigs={this.state.data} />
         </GigsContainer>
       </Container>
     );

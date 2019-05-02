@@ -49,11 +49,10 @@ export const Button = styled.button`
 `;
 const ColouredBackround = styled.div`
   overflow: auto;
-  padding-top: 5vw;
-  background-image: url("http://tubbycreative.com/FigGIFs/Geeza1back.jpg");
+  padding-top: 15vw;
+  background-image: url("http://tubbycreative.com/FigGIFs/TTSWODBeach.png");
   background-size: cover;
-  height:50%;
- 
+  // height:50%;
 `;
 const FlexContainer = styled.div`
   display: flex;
@@ -115,8 +114,8 @@ export default class Geezer extends React.Component {
   }
 
   componentDidMount() {
-    document.body.style.backgroundImage = "url('www.tubbycreative.com/FigGIFs/TTSWODBeach.png')";
-    document.body.style.backgroundImage = "url('http://tubbycreative.com/FigGIFs/Geeza1back.jpg')";
+    // document.body.style.backgroundImage = "url('www.tubbycreative.com/FigGIFs/TTSWODBeach.png')";
+    document.body.style.backgroundImage = "url('http://tubbycreative.com/FigGIFs/TTSWODBeach.png')";
     
     initializeReactGA();
 
@@ -148,14 +147,7 @@ export default class Geezer extends React.Component {
           </ButtonContainer>
           <FlexContainer>
 
-          <AnimatedFigure
-              animation={Will}
-              stillFrame={WillStill}
-              // width={"70%"}
-              sample={Bass}
-              loop={true}
-              playOnLoad={this.state.playing_bass}
-            />
+      
             <AnimatedFigure
               animation={Luke}
               stillFrame={LukeStill}
@@ -164,7 +156,6 @@ export default class Geezer extends React.Component {
               loop={true}
               playOnLoad={this.state.playing_guitar}
             />
-
             <AnimatedFigure
               animation={Clive}
               stillFrame={CliveStill}
@@ -172,6 +163,14 @@ export default class Geezer extends React.Component {
               sample={Drums}
               loop={true}
               playOnLoad={this.state.playing_drums}
+            />
+                <AnimatedFigure
+              animation={Will}
+              stillFrame={WillStill}
+              // width={"70%"}
+              sample={Bass}
+              loop={true}
+              playOnLoad={this.state.playing_bass}
             />
           </FlexContainer>
           <FlexContainer>

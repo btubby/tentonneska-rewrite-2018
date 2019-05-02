@@ -30,8 +30,8 @@ class CaptureEmailAddress extends Component {
       loading: true
     };
     this.dataRef = "";
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     this.setState({ loading: false });
@@ -44,14 +44,14 @@ class CaptureEmailAddress extends Component {
     });
   }
 
-  handleChange(event) {
+  handleChange = (event)  => {
     const newData = event.target.value;
     this.setState({
       newData
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     let newAddress = this.state.newData;
     let duplicate = false;
@@ -78,7 +78,6 @@ class CaptureEmailAddress extends Component {
       alert("You are already a member of the TenTonneSka family");
       return false;
     }
-
     this.dataRef.push(newAddress);
     alert("Thanks, we will be in touch");
   }
