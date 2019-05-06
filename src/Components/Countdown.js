@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const CCountdown = styled.div`
+const CountDownToNextGig = styled.div`
   color: red;
-  // width: 50%;
   font-size: 5vw;
-  line-height: 90%;
+  // line-height: 90%;
 `;
 const CountdownDigit = styled.span`
   font-size: 100%;
@@ -19,7 +18,6 @@ const CountdownDigitZero = styled.span`
 class Countdown extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       days: 0,
       hours: 0,
@@ -96,25 +94,26 @@ class Countdown extends Component {
 
   render() {
     const countDown = this.state;
-
+    
+    var dayString = '';
+    if (countDown.days > 0) {dayString = countDown.days === 1 ? "DAY" : "DAYS"; }
+    var hourString = '';
+    if (countDown.hours > 0) {hourString = countDown.hours === 1 ? "HOUR" : "HOURS"; }
+    
     return (
-      <CCountdown>
+      <CountDownToNextGig>
         <span>
-          {countDown.days > 0 ?
-          <CountdownDigit>{this.addLeadingZeros(countDown.days)}</CountdownDigit>
-          :
-          <CountdownDigitZero>{this.addLeadingZeros(countDown.days)}</CountdownDigitZero>
+          {countDown.days > 0 &&
+          <CountdownDigit>{this.addLeadingZeros(countDown.days)}</CountdownDigit> 
         }
-          <span>{countDown.days === 1 ? "DAY" : "DAYS"}</span>
+         <span>{dayString}</span>
         </span>
 
         <span>
-        {countDown.hours > 0 ?
-          <CountdownDigit>{this.addLeadingZeros(countDown.hours)}</CountdownDigit>
-          :
-          <CountdownDigitZero>{this.addLeadingZeros(countDown.hours)}</CountdownDigitZero>
+        {countDown.hours > 0 &&
+          <CountdownDigit>{this.addLeadingZeros(countDown.hours)}</CountdownDigit> 
         }
-          <span>HOURS</span>
+        <span>{hourString}</span>
         </span>
 
         <span>
@@ -123,14 +122,14 @@ class Countdown extends Component {
           :
           <CountdownDigitZero>{this.addLeadingZeros(countDown.min)}</CountdownDigitZero>
         }
-          <span>MIN</span>
+          <span>MINUTES</span>
         </span>
 
         <span>
           <CountdownDigit>{this.addLeadingZeros(countDown.sec)}</CountdownDigit>
-          <span>SEC</span>
+          <span>SECONDS</span>
         </span>
-      </CCountdown>
+      </CountDownToNextGig>
     );
   }
 }
