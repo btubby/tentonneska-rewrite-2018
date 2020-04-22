@@ -1,6 +1,7 @@
 This project was build from designs from the band TenTonneSka in saaaf London.
 
-TODO:
+#TODO:
+
 The 'Play' section of the site showcases the `AnimatedFigure` component - liberate this into it's own package.
 
 Deployment:
