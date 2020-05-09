@@ -12,5 +12,7 @@ The 'Play' section of the site showcases the `AnimatedFigure` component - libera
 
 yarn deploy
 
-this project was bootstrapped from create-react-app
-this project uses firebase
+- bootstrapped from create-react-app
+- uses firebase hosting
+- uses googlesheets as a CMS
+
