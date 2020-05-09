@@ -1,4 +1,8 @@
-This project was build from designs from the band TenTonneSka in saaaf London.
+The website for the band 'Ten Tonne Ska'
+http://www.tentonneska.com/
+
+This project was build from designs and initial requirements from the band.
+
 
 # TODO:
 
